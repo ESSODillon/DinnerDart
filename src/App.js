@@ -1,7 +1,5 @@
-import "./App.css";
-
 function App() {
-  return <div className="App"></div>;
+  return <div className="App">Dinner Dart</div>;
 }
 
 export default App;
