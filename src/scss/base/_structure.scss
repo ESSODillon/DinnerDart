@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+
 *,
 *::after,
 *::before {
@@ -6,11 +8,13 @@
   box-sizing: inherit;
   scroll-behavior: smooth;
   color: $color-tertiary;
+  background-color: $bg-color;
+  font-family: "Lato";
   // border: red 2px solid;
 }
 
 html {
-  // This defines what 1 rem is, in this case it's 62.5% of the original preset 16px. So the new base for rem is 10px.
+  // This defines what 1 rem is, in this case it's 62.5% of the original preset 16px. So the new base for 1 rem is 10px.
   font-size: 62.5%;
 
   @include respond(tablet-landscape) {

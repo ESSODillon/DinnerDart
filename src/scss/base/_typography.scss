@@ -1,0 +1,10 @@
+.heading-logo {
+  text-transform: uppercase;
+  letter-spacing: 0.75rem;
+  margin-right: auto;
+  font-size: 3rem;
+
+  &--orange {
+    color: $color-primary;
+  }
+}

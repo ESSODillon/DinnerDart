@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 *,
 *::after,
 *::before {
@@ -5,7 +6,9 @@
   padding: 0;
   box-sizing: inherit;
   scroll-behavior: smooth;
-  color: #3a3335; }
+  color: #3a3335;
+  background-color: #fdffff;
+  font-family: "Lato"; }
 
 html {
   font-size: 62.5%; }
@@ -28,3 +31,20 @@ body {
 ::selection {
   background-color: #d95d39;
   color: #fdffff; }
+
+.heading-logo {
+  text-transform: uppercase;
+  letter-spacing: 0.75rem;
+  margin-right: auto;
+  font-size: 3rem; }
+  .heading-logo--orange {
+    color: #d95d39; }
+
+.navigation__nav {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin: 0 auto;
+  margin-bottom: 40px; }
