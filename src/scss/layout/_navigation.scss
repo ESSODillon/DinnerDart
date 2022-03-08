@@ -7,5 +7,191 @@
     padding-right: 1rem;
     margin: 0 auto;
     margin-bottom: 40px;
+    position: relative;
+  }
+
+  &__checkbox {
+    display: none;
+  }
+
+  &__button {
+    height: 7rem;
+    width: 7rem;
+    position: fixed;
+    top: 0rem;
+    left: 0rem;
+    z-index: 2000;
+    text-align: center;
+    background-color: transparent;
+    cursor: pointer;
+
+    @include respond(tablet-portrait) {
+      // top: 4rem;
+      // right: 4rem;
+      // top: 5rem;
+      // right: 5rem;
+    }
+
+    @include respond(phone) {
+      // top: 3rem;
+      // right: 3rem;
+      // top: 4rem;
+      // right: 4rem;
+    }
+  }
+
+  &__background {
+    height: 6rem;
+    width: 6rem;
+    position: fixed;
+    top: 0rem;
+    left: 0rem;
+    background-color: transparent;
+    opacity: 0.6;
+    z-index: 1000;
+
+    @include respond(tablet-portrait) {
+      // top: 4.5rem;
+      // right: 4.5rem;
+      top: 5.5rem;
+      right: 5.5rem;
+    }
+
+    @include respond(phone) {
+      // top: 3.5rem;
+      // right: 3.5rem;
+      top: 4.5rem;
+      right: 4.5rem;
+    }
+  }
+
+  &__nav {
+    height: 100vh;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1500;
+    transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    opacity: 0;
+  }
+
+  &__list {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    list-style: none;
+    text-align: center;
+    width: 30%;
+  }
+
+  &__item {
+    margin: 2rem;
+  }
+
+  &__link {
+    &:link,
+    &:visited {
+      display: inline-block;
+      font-size: 3rem;
+      color: $color-tertiary;
+      text-decoration: none;
+      background-size: 220%;
+      transition: all 0.4s;
+
+      span {
+        margin-right: 1.5rem;
+        display: inline-block;
+      }
+    }
+
+    &:hover,
+    &:active {
+      background-position: 100%;
+      color: $color-primary;
+      transform: translateY(-0.25rem);
+    }
+  }
+
+  // Functionality
+  &__checkbox:checked ~ &__background {
+    transform: scale(100);
+    background-color: $color-black;
+  }
+
+  &__checkbox:checked ~ &__nav {
+    opacity: 1;
+    width: 30%;
+  }
+
+  // Icon
+  &__icon {
+    position: relative;
+    margin-top: 3.5rem;
+    &,
+    &::before,
+    &::after {
+      width: 3rem;
+      height: 3px;
+      background-color: $color-grey-dark-3;
+      display: inline-block;
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      transition: all 0.2s;
+    }
+
+    &::before {
+      top: -0.8rem;
+    }
+    &::after {
+      top: 0.8rem;
+    }
+  }
+
+  &__bag {
+    width: 6rem;
+    height: 5rem;
+    border-radius: 2.5rem;
+    background-color: $color-primary;
+
+    position: absolute;
+    right: 3.5rem;
+    top: 1.2rem;
+    cursor: pointer;
+
+    &--icon {
+      background-color: $color-primary;
+      width: 2.5rem;
+      margin-top: 0.75rem;
+      margin-left: 1.75rem;
+    }
+  }
+
+  &__button:hover &__icon::before {
+    top: -1rem;
+  }
+  &__button:hover &__icon::after {
+    top: 1rem;
+  }
+
+  // When the checkbox is selected, we select its brother (button) then we select the child (icon)
+  &__checkbox:checked + &__button &__icon {
+    background-color: transparent;
+  }
+
+  &__checkbox:checked + &__button &__icon::before {
+    top: 0;
+    transform: rotate(135deg);
+  }
+
+  &__checkbox:checked + &__button &__icon::after {
+    top: 0;
+    transform: rotate(-135deg);
   }
 }

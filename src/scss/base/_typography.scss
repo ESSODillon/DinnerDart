@@ -1,8 +1,18 @@
 .heading-logo {
+  width: max-content;
   text-transform: uppercase;
   letter-spacing: 0.75rem;
   margin-right: auto;
+  margin-left: 8rem;
+  margin-top: 1.5rem;
   font-size: 3rem;
+  display: flex;
+
+  &--tray {
+    width: 6rem;
+    height: 4rem;
+    padding-right: 1rem;
+  }
 
   &--orange {
     color: $color-primary;
