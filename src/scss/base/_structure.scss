@@ -13,24 +13,6 @@
   // border: red 2px solid;
 }
 
-// FOR LOGIN / SIGNUP TESTING PURPOSES ONLY
-label,
-label span {
-  display: block;
-  margin: 6px 0;
-}
-input {
-  padding: 6px;
-  margin-bottom: 12px;
-}
-button {
-  background: $color-primary;
-  color: $bg-color;
-  border: 0;
-  padding: 6px 8px;
-}
-// FOR LOGIN / SIGNUP TESTING PURPOSES ONLY
-
 html {
   // This defines what 1 rem is, in this case it's 62.5% of the original preset 16px. So the new base for 1 rem is 10px.
   font-size: 62.5%;
