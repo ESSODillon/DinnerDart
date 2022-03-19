@@ -12,30 +12,30 @@ export default function Signup() {
   };
 
   return (
-    <div>
-      <h2>Signup</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          <span>email:</span>
-          <input
-            required
-            type="email"
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
-          />
-        </label>
-        <label>
-          <span>password:</span>
-          <input
-            required
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
-          />
-        </label>
-        <button>sign up</button>
-        {error && <p>{error}</p>}
-      </form>
-    </div>
+    <form className="auth-form" onSubmit={handleSubmit}>
+      <h2 className="auth-form__header">Signup</h2>
+      <label className="auth-form__label">
+        <span className="auth-form__span">email:</span>
+        <input
+          required
+          className="auth-form__input"
+          type="email"
+          onChange={(e) => setEmail(e.target.value)}
+          value={email}
+        />
+      </label>
+      <label className="auth-form__label">
+        <span className="auth-form__span">password:</span>
+        <input
+          required
+          className="auth-form__input"
+          type="password"
+          onChange={(e) => setPassword(e.target.value)}
+          value={password}
+        />
+      </label>
+      <button className="btn">sign up</button>
+      {error && <p>{error}</p>}
+    </form>
   );
 }
