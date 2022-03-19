@@ -32,6 +32,14 @@ body {
   background-color: #d95d39;
   color: #fdffff; }
 
+.error {
+  color: red;
+  background: pink;
+  border: 1px solid red;
+  border-radius: 4px;
+  padding: 8px;
+  margin: 10px 0; }
+
 .heading-logo {
   width: max-content;
   text-transform: uppercase;
@@ -210,6 +218,9 @@ body {
     box-sizing: border-box;
     border: 0.1rem solid #ddd;
     border-radius: 0.4rem; }
+    .auth-form__input:active, .auth-form__input:focus, .auth-form__textarea:active, .auth-form__textarea:focus {
+      outline: 0.1rem solid rgba(217, 93, 57, 0.5);
+      border: 0.1rem solid rgba(217, 93, 57, 0.5); }
   .auth-form__textarea {
     min-height: 16rem; }
 

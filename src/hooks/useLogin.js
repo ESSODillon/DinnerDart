@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
 
 // firebase imports
-import { auth } from "../firebase/config";
+import { projectAuth } from "../firebase/config";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
 export const useLogin = () => {
@@ -11,7 +11,7 @@ export const useLogin = () => {
 
   const login = (email, password) => {
     setError(null);
-    signInWithEmailAndPassword(auth, email, password)
+    signInWithEmailAndPassword(projectAuth, email, password)
       .then((res) => {
         dispatch({ type: "LOGIN", payload: res.user });
       })

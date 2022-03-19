@@ -30,6 +30,12 @@
     box-sizing: border-box;
     border: 0.1rem solid #ddd;
     border-radius: 0.4rem;
+
+    &:active,
+    &:focus {
+      outline: 0.1rem solid rgba($color-primary, 0.5);
+      border: 0.1rem solid rgba($color-primary, 0.5);
+    }
   }
 
   &__textarea {
