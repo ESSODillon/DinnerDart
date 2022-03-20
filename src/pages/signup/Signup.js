@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useSignup } from "../../hooks/useSignup";
+import { Link } from "react-router-dom";
+import Button from "@mui/material/Button";
 
 export default function Signup() {
   const [email, setEmail] = useState("");
@@ -41,57 +43,110 @@ export default function Signup() {
   };
 
   return (
-    <form className="auth-form" onSubmit={handleSubmit}>
-      <h2 className="auth-form__header">Signup</h2>
+    <div className="auth-background">
+      <form id="signup-form" className="auth-form" onSubmit={handleSubmit}>
+        <h2 className="auth-form__header">Signup</h2>
 
-      <label className="auth-form__label">
-        <span className="auth-form__span">email:</span>
-        <input
-          required
-          className="auth-form__input"
-          type="email"
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
-        />
-      </label>
-      <label className="auth-form__label">
-        <span className="auth-form__span">password:</span>
-        <input
-          required
-          className="auth-form__input"
-          type="password"
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-        />
-      </label>
-      <label className="auth-form__label">
-        <span className="auth-form__span">name:</span>
-        <input
-          required
-          className="auth-form__input"
-          type="text"
-          onChange={(e) => setDisplayName(e.target.value)}
-          value={displayName}
-        />
-      </label>
-      <label className="auth-form__label">
-        <span>profile picture:</span>
-        <input
-          required
-          type="file"
-          className="auth-form__input"
-          onChange={handleFileChange}
-        />
-        {thumbnailError && <div className="error">{thumbnailError}</div>}
-      </label>
+        <label className="auth-form__label">
+          <span className="auth-form__span">email:</span>
+          <input
+            required
+            className="auth-form__input"
+            type="email"
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+          />
+        </label>
+        <label className="auth-form__label">
+          <span className="auth-form__span">password:</span>
+          <input
+            required
+            className="auth-form__input"
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+          />
+        </label>
+        <label className="auth-form__label">
+          <span className="auth-form__span">name:</span>
+          <input
+            required
+            className="auth-form__input"
+            type="text"
+            onChange={(e) => setDisplayName(e.target.value)}
+            value={displayName}
+          />
+        </label>
+        <label className="auth-form__label">
+          <span>profile picture:</span>
+          <input
+            required
+            type="file"
+            className="auth-form__input"
+            onChange={handleFileChange}
+          />
+          {thumbnailError && <div className="error">{thumbnailError}</div>}
+        </label>
 
-      {!isPending && <button className="btn">Signup</button>}
-      {isPending && (
-        <button disabled className="btn">
-          Loading
-        </button>
-      )}
-      {error && <div className="error">{error}</div>}
-    </form>
+        {!isPending && (
+          <Button
+            variant="contained"
+            type="submit"
+            form="signup-form"
+            style={{
+              background: "#d95d39",
+              padding: "0.8rem 1.2rem",
+              borderRadius: "10rem",
+              fontFamily: "Lato",
+              color: "#fdffff",
+              cursor: "pointer",
+              fontSize: "1.8rem",
+              border: "none",
+              textTransform: "capitalize",
+              lineHeight: "1.8rem",
+              display: "block",
+              margin: "0 auto",
+              width: "90%",
+            }}
+            size="large"
+            margin="normal"
+          >
+            Signup
+          </Button>
+        )}
+        {isPending && (
+          <Button
+            variant="contained"
+            disabled
+            style={{
+              background: "#d95d39",
+              padding: "0.8rem 1.2rem",
+              borderRadius: "10rem",
+              fontFamily: "Lato",
+              color: "#fdffff",
+              cursor: "pointer",
+              fontSize: "1.8rem",
+              border: "none",
+              textTransform: "capitalize",
+              lineHeight: "1.8rem",
+              display: "block",
+              margin: "0 auto",
+              width: "90%",
+            }}
+            size="large"
+            margin="normal"
+          >
+            Loading...
+          </Button>
+        )}
+        <p className="auth-form__redirect">
+          Already have an account?
+          <Link className="auth-form__redirect--link" to="/login">
+            Sign in
+          </Link>
+        </p>
+        {error && <div className="error">{error}</div>}
+      </form>
+    </div>
   );
 }
