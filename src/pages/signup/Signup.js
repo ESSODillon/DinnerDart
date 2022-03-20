@@ -4,7 +4,7 @@ import { useSignup } from "../../hooks/useSignup";
 export default function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+  const [displayName, setDisplayName] = useState("");
   const [thumbnail, setThumbnail] = useState(null);
   const [thumbnailError, setThumbnailError] = useState(null);
   const { signup, isPending, error } = useSignup();
@@ -12,7 +12,7 @@ export default function Signup() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(signup);
-    signup(email, password, name, thumbnail);
+    signup(email, password, displayName, thumbnail);
   };
 
   const handleFileChange = (e) => {
@@ -70,8 +70,8 @@ export default function Signup() {
           required
           className="auth-form__input"
           type="text"
-          onChange={(e) => setName(e.target.value)}
-          value={name}
+          onChange={(e) => setDisplayName(e.target.value)}
+          value={displayName}
         />
       </label>
       <label className="auth-form__label">

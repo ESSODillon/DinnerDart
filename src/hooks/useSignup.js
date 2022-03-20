@@ -1,17 +1,16 @@
 import { useState, useEffect } from "react";
-import { useAuthContext } from "../hooks/useAuthContext";
-
-import { projectAuth, projectStorage } from "../firebase/config";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { collection } from "firebase/firestore";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import {
+  projectAuth,
+  projectStorage,
+  projectFirestore,
+} from "../firebase/config";
+import { useAuthContext } from "./useAuthContext";
 
 export const useSignup = () => {
   const [isCancelled, setIsCancelled] = useState(false);
   const [error, setError] = useState(null);
   const [isPending, setIsPending] = useState(false);
   const { dispatch } = useAuthContext();
-  const [url, setUrl] = useState(null);
 
   const signup = async (email, password, displayName, thumbnail) => {
     setError(null);
@@ -19,8 +18,7 @@ export const useSignup = () => {
 
     try {
       // signup
-      const res = await createUserWithEmailAndPassword(
-        projectAuth,
+      const res = await projectAuth.createUserWithEmailAndPassword(
         email,
         password
       );
@@ -30,35 +28,18 @@ export const useSignup = () => {
       }
 
       // upload user thumbnail
-      const imageRef = `thumbnails/${res.user.uid}/${thumbnail.name}`;
-
-      const img = ref(projectStorage, imageRef);
-
-      uploadBytes(imageRef, thumbnail)
-        .then(() => {
-          getDownloadURL(imageRef)
-            .then((url) => {
-              setUrl(url);
-            })
-            .catch((error) => {
-              console.log(error.message, "error getting the image url");
-            });
-        })
-        .catch((error) => {
-          console.log(error.message);
-        });
-
-      // const imgUrl = await img.ref.getDownloadURL();
+      const uploadPath = `thumbnails/${res.user.uid}/${thumbnail.name}`;
+      const img = await projectStorage.ref(uploadPath).put(thumbnail);
+      const imgUrl = await img.ref.getDownloadURL();
 
       // add display AND PHOTO_URL name to user
-      // await res.user.updateProfile({ displayName, photoURL: imgUrl });
-      await updateProfile(res.user, { displayName, photoURL: url });
+      await res.user.updateProfile({ displayName, photoURL: imgUrl });
 
       // create a user document
-      await collection("users").doc(res.user.uid).set({
+      await projectFirestore.collection("users").doc(res.user.uid).set({
         online: true,
         displayName,
-        photoURL: url,
+        photoURL: imgUrl,
       });
 
       // dispatch login action
