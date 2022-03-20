@@ -8,7 +8,6 @@
   box-sizing: inherit;
   scroll-behavior: smooth;
   color: $color-tertiary;
-  background-color: $bg-color;
   font-family: "Lato";
   // border: red 2px solid;
 }
@@ -35,6 +34,7 @@ html {
 
 body {
   box-sizing: border-box;
+  background-color: $bg-color;
 
   @include respond(tablet-portrait) {
     padding: 0;

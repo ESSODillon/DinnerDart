@@ -1,10 +1,13 @@
 .navigation {
+  height: 6vh;
   &__nav {
     display: flex;
+
     gap: 10px;
     align-items: center;
     padding-left: 1rem;
     padding-right: 1rem;
+    background-color: $bg-color;
     margin: 0 auto;
     margin-bottom: 40px;
     position: relative;
@@ -46,7 +49,6 @@
     position: fixed;
     top: 0rem;
     left: 0rem;
-    background-color: transparent;
     opacity: 0.6;
     z-index: 1000;
 
