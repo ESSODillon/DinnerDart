@@ -11,6 +11,7 @@ export default function Signup() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(signup);
     signup(email, password, name, thumbnail);
   };
 
