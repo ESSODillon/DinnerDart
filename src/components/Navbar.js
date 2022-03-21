@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useLogout } from "../hooks/useLogout";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 // Images
 import Tray from "../assets/food-tray.svg";
@@ -7,6 +9,8 @@ import Bag from "../assets/shopping-bag.svg";
 
 export default function Navbar() {
   const [activeNav, setActiveNav] = useState(false);
+  const { logout, isPending } = useLogout();
+  const { user, authIsReady } = useAuthContext();
 
   const toggleNav = () => {
     if (activeNav) {
@@ -43,26 +47,60 @@ export default function Navbar() {
 
       <nav className="navigation__nav">
         <ul className="navigation__list">
-          <li className="navigation__item" id="navi-link" onClick={toggleNav}>
-            <Link to="/" className="navigation__link">
-              Home
-            </Link>
-          </li>
-          <li className="navigation__item" id="navi-link" onClick={toggleNav}>
-            <Link to="/about" className="navigation__link">
-              About
-            </Link>
-          </li>
-          <li className="navigation__item" id="navi-link" onClick={toggleNav}>
-            <Link to="/login" className="navigation__link">
-              Login
-            </Link>
-          </li>
-          <li className="navigation__item" id="navi-link" onClick={toggleNav}>
-            <Link to="/signup" className="navigation__link">
-              Signup
-            </Link>
-          </li>
+          {user && (
+            <>
+              <li
+                className="navigation__item"
+                id="navi-link"
+                onClick={toggleNav}
+              >
+                <Link to="/" className="navigation__link">
+                  Home
+                </Link>
+              </li>
+              <li
+                className="navigation__item"
+                id="navi-link"
+                onClick={toggleNav}
+              >
+                <Link to="/about" className="navigation__link">
+                  About
+                </Link>
+              </li>
+              <li
+                className="navigation__item"
+                id="navi-link"
+                onClick={toggleNav}
+              >
+                <Link to="/" onClick={logout} className="navigation__link">
+                  Logout
+                </Link>
+              </li>
+            </>
+          )}
+
+          {!user && (
+            <>
+              <li
+                className="navigation__item"
+                id="navi-link"
+                onClick={toggleNav}
+              >
+                <Link to="/login" className="navigation__link">
+                  Login
+                </Link>
+              </li>
+              <li
+                className="navigation__item"
+                id="navi-link"
+                onClick={toggleNav}
+              >
+                <Link to="/signup" className="navigation__link">
+                  Signup
+                </Link>
+              </li>
+            </>
+          )}
         </ul>
       </nav>
 
