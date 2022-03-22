@@ -7,7 +7,8 @@
   box-sizing: inherit;
   scroll-behavior: smooth;
   color: #3a3335;
-  font-family: "Lato"; }
+  font-family: "Lato";
+  text-decoration: none; }
 
 html {
   font-size: 62.5%; }
@@ -42,8 +43,8 @@ body {
 
 .delete {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  bottom: 9rem;
+  right: 1rem;
   cursor: pointer;
   filter: invert(60%); }
 
@@ -62,6 +63,42 @@ body {
     padding-right: 1rem; }
   .heading-logo--orange {
     color: #d95d39; }
+
+.u-center-text {
+  text-align: center !important; }
+
+.u-bold-text {
+  font-weight: bold !important; }
+
+.u-display-none {
+  display: none; }
+
+.u-margin-bottom-small {
+  margin-bottom: 1.5rem !important; }
+
+.u-margin-bottom-medium {
+  margin-bottom: 4rem !important; }
+  @media only screen and (max-width: 56.25em) {
+    .u-margin-bottom-medium {
+      margin-bottom: 3rem !important; } }
+
+.u-margin-bottom-big {
+  margin-bottom: 8rem !important; }
+  @media only screen and (max-width: 56.25em) {
+    .u-margin-bottom-big {
+      margin-bottom: 5rem !important; } }
+
+.u-margin-top-small {
+  margin-top: 1.5rem !important; }
+
+.u-margin-top-medium {
+  margin-top: 4rem !important; }
+
+.u-margin-top-big {
+  margin-top: 8rem !important; }
+
+.u-margin-top-huge {
+  margin-top: 10rem !important; }
 
 .navigation {
   height: 6vh; }
@@ -231,3 +268,10 @@ body {
   background-image: linear-gradient(to left bottom, rgba(58, 51, 53, 0.9), rgba(58, 51, 53, 0.9)), url(../assets/background1.jpeg);
   background-size: cover;
   background-position: top; }
+
+.restaurant-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 40px;
+  max-width: 1200px;
+  margin: 40px auto; }
