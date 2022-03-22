@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
+import Button from "@mui/material/Button";
 
 // Images
 import Tray from "../assets/food-tray.svg";
