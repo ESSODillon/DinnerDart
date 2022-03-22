@@ -1,9 +1,15 @@
+// React, Firebase and Router
 import React from "react";
 import { Link } from "react-router-dom";
 import { useTheme } from "../hooks/useTheme";
-import Trashcan from "../assets/trashcan.svg";
 import { projectFirestore } from "../firebase/config";
+import { useAuthContext } from "../hooks/useAuthContext";
+import { useCollection } from "../hooks/useCollection";
 
+// Images
+import Trashcan from "../assets/trashcan.svg";
+
+// Material UI
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -11,9 +17,25 @@ import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 
 export default function RestaurantList({ restaurants }) {
+  const { user, authIsReady } = useAuthContext();
   const { mode } = useTheme();
+  const { error, documents } = useCollection("users");
 
-  console.log(mode);
+  // Messing around with authIsReady
+  console.log(authIsReady);
+
+  // If the currently logged user's ID matches a document in the users table ID, console log that users role
+
+  // if (authIsReady) {
+  //   console.log(documents[0].id);
+  //   console.log(documents[0].role);
+
+  //   for (let x in documents) {
+  //     if (user.id == documents[x].id) {
+  //       console.log(documents[x].id);
+  //     }
+  //   }
+  // }
 
   if (restaurants.length == 0) {
     return <div className="error">No restaurants to load...</div>;
@@ -56,11 +78,13 @@ export default function RestaurantList({ restaurants }) {
                   Lizards are a widespread group of squamate reptiles, with over
                   6,000 species, ranging across all continents except Antarctica
                 </Typography>
-                <img
-                  className="delete"
-                  src={Trashcan}
-                  onClick={() => deleteItem(restaurant.id)}
-                />
+                {/* {documents.role == "admin" && (
+                  <img
+                    className="delete"
+                    src={Trashcan}
+                    onClick={() => deleteItem(restaurant.id)}
+                  />
+                )} */}
               </CardContent>
             </CardActionArea>
           </Link>

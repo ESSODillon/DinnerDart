@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useSignup } from "../../hooks/useSignup";
 import { Link } from "react-router-dom";
+
+// Material UI
 import Button from "@mui/material/Button";
 
 export default function Signup() {
@@ -8,13 +10,14 @@ export default function Signup() {
   const [password, setPassword] = useState("");
   const [displayName, setDisplayName] = useState("");
   const [thumbnail, setThumbnail] = useState(null);
+  const [role, setRole] = useState("customer");
   const [thumbnailError, setThumbnailError] = useState(null);
   const { signup, isPending, error } = useSignup();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(signup);
-    signup(email, password, displayName, thumbnail);
+    signup(email, password, displayName, thumbnail, role);
   };
 
   const handleFileChange = (e) => {
@@ -32,8 +35,8 @@ export default function Signup() {
       return;
     }
 
-    if (selected.size > 100000) {
-      setThumbnailError("Image file size must be less than 100kb");
+    if (selected.size > 200000) {
+      setThumbnailError("Image file size must be less than 200kb");
       return;
     }
 
@@ -86,6 +89,21 @@ export default function Signup() {
             onChange={handleFileChange}
           />
           {thumbnailError && <div className="error">{thumbnailError}</div>}
+        </label>
+        <label className="auth-form__label">
+          <span>user role:</span>
+          <select
+            required
+            className="auth-form__input"
+            name="roles"
+            id="roles"
+            onChange={(e) => setRole(e.target.value)}
+          >
+            <option value="customer">Customer</option>
+            <option value="admin">Admin</option>
+            <option value="darter">Darter</option>
+            <option value="restaurant">Restaurant</option>
+          </select>
         </label>
 
         {!isPending && (
