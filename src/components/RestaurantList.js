@@ -1,7 +1,6 @@
 // React, Firebase and Router
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useTheme } from "../hooks/useTheme";
 import { projectFirestore } from "../firebase/config";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useCollection } from "../hooks/useCollection";
@@ -17,25 +16,52 @@ import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 
 export default function RestaurantList({ restaurants }) {
-  const { user, authIsReady } = useAuthContext();
-  const { mode } = useTheme();
-  const { error, documents } = useCollection("users");
+  const { user } = useAuthContext();
+  const [userData, setUserData] = useState(null);
+  const [isPending, setIsPending] = useState(false);
+  const [admin, setAdmin] = useState(false);
+  const [error, setError] = useState(false);
 
-  // Messing around with authIsReady
-  console.log(authIsReady);
+  useEffect(() => {
+    setIsPending(true);
+
+    const unsub = projectFirestore.collection("users").onSnapshot(
+      (snapshot) => {
+        if (snapshot.empty) {
+          setError("Data failed to load");
+          setIsPending(false);
+        } else {
+          let results = [];
+          snapshot.docs.forEach((doc) => {
+            results.push({ id: doc.id, ...doc.data() });
+          });
+          setUserData(results);
+          setIsPending(false);
+        }
+      },
+      (err) => {
+        setError(err.message);
+        setIsPending(false);
+      }
+    );
+
+    return () => unsub();
+  }, []);
 
   // If the currently logged user's ID matches a document in the users table ID, console log that users role
 
-  // if (authIsReady) {
-  //   console.log(documents[0].id);
-  //   console.log(documents[0].role);
-
-  //   for (let x in documents) {
-  //     if (user.id == documents[x].id) {
-  //       console.log(documents[x].id);
-  //     }
-  //   }
-  // }
+  useEffect(() => {
+    if (userData != null) {
+      for (let x in userData) {
+        if (user.uid == userData[x].id && userData[x].role == "admin") {
+          setAdmin(true);
+          return;
+        } else {
+          setAdmin(false);
+        }
+      }
+    }
+  }, [userData]);
 
   if (restaurants.length == 0) {
     return <div className="error">No restaurants to load...</div>;
@@ -78,13 +104,13 @@ export default function RestaurantList({ restaurants }) {
                   Lizards are a widespread group of squamate reptiles, with over
                   6,000 species, ranging across all continents except Antarctica
                 </Typography>
-                {/* {documents.role == "admin" && (
+                {admin && (
                   <img
                     className="delete"
                     src={Trashcan}
                     onClick={() => deleteItem(restaurant.id)}
                   />
-                )} */}
+                )}
               </CardContent>
             </CardActionArea>
           </Link>
