@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { projectFirestore } from "../firebase/config";
 import { useAuthContext } from "../hooks/useAuthContext";
-import { useCollection } from "../hooks/useCollection";
+import { useRole } from "../hooks/useRole";
+import { useTheme } from "../hooks/useTheme";
 
 // Images
 import Trashcan from "../assets/trashcan.svg";
@@ -17,6 +18,7 @@ import { CardActionArea } from "@mui/material";
 
 export default function RestaurantList({ restaurants }) {
   const { user } = useAuthContext();
+  const { role } = useRole();
   const [userData, setUserData] = useState(null);
   const [isPending, setIsPending] = useState(false);
   const [admin, setAdmin] = useState(false);
