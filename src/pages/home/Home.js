@@ -1,10 +1,12 @@
 import { projectFirestore } from "../../firebase/config";
 import React, { useEffect, useState } from "react";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 // Components
 import RestaurantList from "../../components/RestaurantList";
 
 export default function Home() {
+  const { user } = useAuthContext();
   const [data, setData] = useState(null);
   const [isPending, setIsPending] = useState(false);
   const [error, setError] = useState(false);
@@ -39,6 +41,11 @@ export default function Home() {
     <div className="home">
       {error && <p className="error">{error}</p>}
       {isPending && <p className="loading">Loading...</p>}
+
+      <div className="home__banner">
+        <h1 className="home__banner--header">Hi, {user.displayName}</h1>
+      </div>
+
       {data && <RestaurantList restaurants={data} />}
     </div>
   );

@@ -94,10 +94,6 @@ export function RoleProvider({ children }) {
     }
   }, [user, userData]);
 
-  if (authIsReady) {
-    console.log(currentRole);
-  }
-
   return (
     <RoleContext.Provider value={{ ...state, dispatch }}>
       {children}
