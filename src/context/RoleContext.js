@@ -18,12 +18,22 @@ export function RoleProvider({ children }) {
   const [state, dispatch] = useReducer(roleReducer, {
     role: null,
   });
-  const { user } = useAuthContext();
+  const { user, authIsReady } = useAuthContext();
   const [userData, setUserData] = useState(null);
   const [isPending, setIsPending] = useState(false);
   const [error, setError] = useState(false);
-
   const [currentRole, setCurrentRole] = useState("");
+
+  useEffect(() => {
+    const unsub = projectAuth.onAuthStateChanged((user) => {
+      dispatch({ type: "ROLE", payload: currentRole });
+      unsub();
+
+      if (!authIsReady) {
+        unsub();
+      }
+    });
+  }, [currentRole]);
 
   useEffect(() => {
     setIsPending(true);
@@ -54,7 +64,7 @@ export function RoleProvider({ children }) {
   // If the currently logged user's ID matches a document in the users table ID, console log that users role
 
   useEffect(() => {
-    if (userData != null) {
+    if (user != null && userData != null && authIsReady) {
       for (let x in userData) {
         if (user.uid == userData[x].id && userData[x].role == "admin") {
           setCurrentRole("admin");
@@ -82,16 +92,11 @@ export function RoleProvider({ children }) {
         }
       }
     }
-  }, [userData]);
+  }, [user, userData]);
 
-  useEffect(() => {
-    const unsub = projectAuth.onAuthStateChanged((user) => {
-      dispatch({ type: "ROLE", payload: currentRole });
-      unsub();
-    });
-  }, [currentRole]);
-
-  console.log(currentRole);
+  if (authIsReady) {
+    console.log(currentRole);
+  }
 
   return (
     <RoleContext.Provider value={{ ...state, dispatch }}>

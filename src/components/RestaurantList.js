@@ -15,6 +15,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
+import Rating from "@mui/material/Rating";
 
 export default function RestaurantList({ restaurants }) {
   const { user } = useAuthContext();
@@ -76,7 +77,11 @@ export default function RestaurantList({ restaurants }) {
   return (
     <div className="restaurant-list">
       {restaurants.map((restaurant) => (
-        <Card sx={{ maxWidth: 345 }} key={restaurant.id}>
+        <Card
+          sx={{ maxWidth: 345 }}
+          key={restaurant.id}
+          style={{ fontSize: "1.6rem", fontFamily: "Lato" }}
+        >
           <Link
             to={`/restaurants/${restaurant.id}`}
             className="u-remove-text-decoration"
@@ -94,7 +99,7 @@ export default function RestaurantList({ restaurants }) {
                   color="text.secondary"
                   gutterBottom
                 >
-                  Word of the Day
+                  {restaurant.hours}
                 </Typography>
                 <Typography gutterBottom variant="h5" component="div">
                   {restaurant.name}
@@ -102,10 +107,12 @@ export default function RestaurantList({ restaurants }) {
                 <Typography sx={{ mb: 1.5 }} color="text.secondary">
                   {restaurant.cuisines[0]}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Lizards are a widespread group of squamate reptiles, with over
-                  6,000 species, ranging across all continents except Antarctica
-                </Typography>
+                <Rating
+                  name="simple-controlled"
+                  precision={0.5}
+                  value={restaurant.rating}
+                  readOnly
+                />
                 {admin && (
                   <img
                     className="delete"
