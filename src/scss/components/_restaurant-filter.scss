@@ -1,0 +1,29 @@
+.restaurant-filter {
+  margin: 3rem auto;
+}
+.restaurant-filter nav {
+  display: flex;
+  padding: 1rem;
+  background-color: $color-grey-light-1;
+  border-radius: 0.4rem;
+  justify-content: space-around;
+}
+.restaurant-filter p {
+  font-size: 0.9rem;
+  margin-right: 0.1rem;
+}
+.restaurant-filter button {
+  background: transparent;
+  border: 0;
+  font-family: inherit;
+  font-weight: bold;
+  color: $color-tertiary;
+  cursor: pointer;
+  font-size: 1.6rem;
+}
+.restaurant-filter button:last-child {
+  border: 0;
+}
+.restaurant-filter button.active {
+  color: $color-primary;
+}
