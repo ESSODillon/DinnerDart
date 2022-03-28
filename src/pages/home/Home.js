@@ -23,19 +23,20 @@ export default function Home() {
 
   const restaurants = documents
     ? documents.filter((document) => {
-        switch (currentFilter) {
-          case "All":
-            return true;
-          case "American":
-          case "Asian":
-          case "Fast Food":
-          case "Pizza":
-          case "Chicken":
-          case "Breakfast":
-            // Change this to cycle through every cuisines option
-            return document.cuisines[0] === currentFilter;
-          default:
-            return true;
+        console.log(documents[0].cuisines.length);
+        for (var x = 0; documents[x].cuisines.length; x++) {
+          var cuisineOptions = documents[x].cuisines;
+          console.log(cuisineOptions);
+          for (let y = 0; cuisineOptions.length; y++) {
+            switch (currentFilter) {
+              case "All":
+                return true;
+              case cuisineOptions[y]:
+                return cuisineOptions[y] === currentFilter;
+              default:
+                break;
+            }
+          }
         }
       })
     : null;

@@ -266,6 +266,7 @@ body {
         background-color: #f0eeee; }
       .home__banner--search__input::-webkit-input-placeholder {
         font-weight: 100;
+        font-family: "Lato";
         color: #333; }
     .home__banner--search__input:focus + .home__banner--search__button {
       transition: all 0.2s;
@@ -273,7 +274,7 @@ body {
     .home__banner--search__button {
       transition: all 0.2s;
       border: none;
-      background-color: #c6c6c6; }
+      background-color: #ccc; }
       .home__banner--search__button:focus {
         outline: none; }
       .home__banner--search__button:active {
@@ -338,7 +339,7 @@ body {
 
 .restaurant-filter nav {
   display: flex;
-  padding: 3rem;
+  padding: 2.5rem;
   background-color: #f7f7f7;
   border-radius: 0.4rem;
   justify-content: space-around; }
@@ -350,7 +351,7 @@ body {
 .restaurant-filter button {
   background: transparent;
   border: 0;
-  font-family: inherit;
+  font-family: "Lato";
   font-weight: bold;
   color: #3a3335;
   cursor: pointer;
@@ -361,3 +362,15 @@ body {
 
 .restaurant-filter button.active {
   color: #d95d39; }
+
+.arrow_box {
+  transition: all 0.5s;
+  background-color: rgba(217, 93, 57, 0.4);
+  font-size: 1.6rem;
+  border-radius: 50%;
+  color: #fdffff;
+  cursor: pointer; }
+
+.arrow_box:hover {
+  background-color: #d95d39;
+  color: #fdffff; }

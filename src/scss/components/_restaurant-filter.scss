@@ -1,6 +1,6 @@
 .restaurant-filter nav {
   display: flex;
-  padding: 3rem;
+  padding: 2.5rem;
   background-color: $color-grey-light-1;
   border-radius: 0.4rem;
   justify-content: space-around;
@@ -12,7 +12,7 @@
 .restaurant-filter button {
   background: transparent;
   border: 0;
-  font-family: inherit;
+  font-family: "Lato";
   font-weight: bold;
   color: $color-tertiary;
   cursor: pointer;
@@ -23,4 +23,18 @@
 }
 .restaurant-filter button.active {
   color: $color-primary;
+}
+
+.arrow_box {
+  transition: all 0.5s;
+  background-color: rgba($color-primary, 0.4);
+  font-size: 1.6rem;
+  border-radius: 50%;
+  color: $bg-color;
+  cursor: pointer;
+}
+
+.arrow_box:hover {
+  background-color: $color-primary;
+  color: $bg-color;
 }

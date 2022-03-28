@@ -55,6 +55,7 @@
 
         &::-webkit-input-placeholder {
           font-weight: 100;
+          font-family: "Lato";
           color: $color-grey-dark-3;
         }
       }
@@ -67,7 +68,7 @@
       &__button {
         transition: all 0.2s;
         border: none;
-        background-color: $color-grey-light-2;
+        background-color: $color-grey-light-4;
 
         &:focus {
           outline: none;
