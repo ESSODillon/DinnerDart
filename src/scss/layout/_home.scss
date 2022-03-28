@@ -4,7 +4,7 @@
     height: 15vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     background-image: linear-gradient(
         to left bottom,
@@ -16,7 +16,73 @@
     background-position: top;
 
     &--header {
+      width: 60%;
+      font-size: 2.5rem;
+      text-align: center;
       color: $bg-color;
+    }
+
+    &--search {
+      flex: 0 0 40%;
+      display: flex;
+      width: 25%;
+      align-items: center;
+      justify-content: center;
+
+      @media only screen and (max-width: $bp-smallest) {
+        order: 1;
+        flex: 0 0 100%;
+        background-color: $color-grey-light-2;
+      }
+
+      &__input {
+        font-family: "Lato";
+        font-size: 1.4rem;
+        color: inherit;
+        background-color: $color-grey-light-4;
+        border: none;
+        padding: 0.7rem 2rem;
+        border-radius: 100px;
+        width: 90%;
+        margin-right: -3.25rem;
+        transition: all 0.2s;
+
+        &:focus {
+          outline: none;
+          width: 100%;
+          background-color: $color-grey-light-3;
+        }
+
+        &::-webkit-input-placeholder {
+          font-weight: 100;
+          color: $color-grey-dark-3;
+        }
+      }
+
+      &__input:focus + &__button {
+        transition: all 0.2s;
+        background-color: $color-grey-light-3;
+      }
+
+      &__button {
+        transition: all 0.2s;
+        border: none;
+        background-color: $color-grey-light-2;
+
+        &:focus {
+          outline: none;
+        }
+
+        &:active {
+          transform: translateY(2px);
+        }
+      }
+
+      &__icon {
+        height: 2rem;
+        width: 2rem;
+        fill: $color-grey-dark-3;
+      }
     }
   }
 }

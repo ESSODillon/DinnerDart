@@ -7,6 +7,9 @@ import { useCollection } from "../../hooks/useCollection";
 import RestaurantList from "../../components/RestaurantList";
 import RestaurantFilter from "./RestaurantFilter";
 
+// Material UI
+import SearchIcon from "@mui/icons-material/Search";
+
 export default function Home() {
   const { user } = useAuthContext();
   const [data, setData] = useState(null);
@@ -73,6 +76,18 @@ export default function Home() {
         <h1 className="home__banner--header">
           Already know what you want {user.displayName}?
         </h1>
+        <form action="#" className="home__banner--search">
+          <input
+            type="text"
+            className="home__banner--search__input"
+            placeholder="Search"
+          />
+          <button className="home__banner--search__button">
+            <svg className="home__banner--search__icon">
+              <SearchIcon />
+            </svg>
+          </button>
+        </form>
       </div>
 
       <RestaurantFilter

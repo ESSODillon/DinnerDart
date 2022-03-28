@@ -228,13 +228,60 @@ body {
   height: 15vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   background-image: linear-gradient(to left bottom, rgba(217, 93, 57, 0.76), rgba(217, 93, 57, 0.76)), url(../assets/banner.jpeg);
   background-size: cover;
   background-position: top; }
   .home__banner--header {
+    width: 60%;
+    font-size: 2.5rem;
+    text-align: center;
     color: #fdffff; }
+  .home__banner--search {
+    flex: 0 0 40%;
+    display: flex;
+    width: 25%;
+    align-items: center;
+    justify-content: center; }
+    @media only screen and (max-width: 31.25em) {
+      .home__banner--search {
+        order: 1;
+        flex: 0 0 100%;
+        background-color: #c6c6c6; } }
+    .home__banner--search__input {
+      font-family: "Lato";
+      font-size: 1.4rem;
+      color: inherit;
+      background-color: #ccc;
+      border: none;
+      padding: 0.7rem 2rem;
+      border-radius: 100px;
+      width: 90%;
+      margin-right: -3.25rem;
+      transition: all 0.2s; }
+      .home__banner--search__input:focus {
+        outline: none;
+        width: 100%;
+        background-color: #f0eeee; }
+      .home__banner--search__input::-webkit-input-placeholder {
+        font-weight: 100;
+        color: #333; }
+    .home__banner--search__input:focus + .home__banner--search__button {
+      transition: all 0.2s;
+      background-color: #f0eeee; }
+    .home__banner--search__button {
+      transition: all 0.2s;
+      border: none;
+      background-color: #c6c6c6; }
+      .home__banner--search__button:focus {
+        outline: none; }
+      .home__banner--search__button:active {
+        transform: translateY(2px); }
+    .home__banner--search__icon {
+      height: 2rem;
+      width: 2rem;
+      fill: #333; }
 
 .auth-form {
   max-width: 36rem;
@@ -289,14 +336,10 @@ body {
   max-width: 1200px;
   margin: 40px auto; }
 
-.restaurant-filter {
-  margin: 3rem auto; }
-
 .restaurant-filter nav {
   display: flex;
-  padding: 1rem;
+  padding: 3rem;
   background-color: #f7f7f7;
-  height: 5vh;
   border-radius: 0.4rem;
   justify-content: space-around; }
 
