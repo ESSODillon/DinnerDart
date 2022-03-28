@@ -1,5 +1,4 @@
-import { projectFirestore } from "../../firebase/config";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useCollection } from "../../hooks/useCollection";
 
@@ -40,32 +39,6 @@ export default function Home() {
         }
       })
     : null;
-
-  useEffect(() => {
-    setIsPending(true);
-
-    const unsub = projectFirestore.collection("restaurants").onSnapshot(
-      (snapshot) => {
-        if (snapshot.empty) {
-          setError("Data failed to load");
-          setIsPending(false);
-        } else {
-          let results = [];
-          snapshot.docs.forEach((doc) => {
-            results.push({ id: doc.id, ...doc.data() });
-          });
-          setData(results);
-          setIsPending(false);
-        }
-      },
-      (err) => {
-        setError(err.message);
-        setIsPending(false);
-      }
-    );
-
-    return () => unsub();
-  }, []);
 
   return (
     <div className="home">
