@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useCollection } from "../../hooks/useCollection";
 
@@ -16,28 +16,38 @@ export default function Home() {
   const [error, setError] = useState(false);
   const { documents } = useCollection("restaurants");
   const [currentFilter, setCurrentFilter] = useState("All");
-  // const [cuisineOptions, setCuisineOptions] = useState([]);
+  const [cuisineOptions, setCuisineOptions] = useState([]);
+  const [restaurants, setRestaurants] = useState([]);
 
   const changeFilter = (newFilter) => {
     setCurrentFilter(newFilter);
   };
 
-  const restaurants = documents
-    ? documents.filter((document) => {
-        for (let x in documents) {
-          var cuisineOptions = document.cuisines;
+  useEffect(() => {
+    for (let x in documents) {
+      setCuisineOptions(documents[x].cuisines);
+      console.log(cuisineOptions);
 
-          switch (currentFilter) {
-            case "All":
-              return true;
-            case cuisineOptions[x]:
-              return cuisineOptions.includes(currentFilter);
-            default:
-              break;
-          }
-        }
-      })
-    : null;
+      for (let y = 0; cuisineOptions.length; y++) {
+        restaurants = documents
+          ? documents.filter((document) => {
+              console.log(cuisineOptions[y]);
+              console.log(currentFilter);
+
+              switch (currentFilter) {
+                case "All":
+                  return true;
+                case cuisineOptions[y]:
+                  return cuisineOptions[y].includes(currentFilter);
+                default:
+                  break;
+              }
+            })
+          : null;
+      }
+      console.log(restaurants);
+    }
+  }, []);
 
   return (
     <div className="home">

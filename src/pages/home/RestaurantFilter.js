@@ -15,6 +15,7 @@ export default function RestaurantFilter({ currentFilter, changeFilter }) {
 
   for (let x in documents) {
     let cuisines = documents[x].cuisines;
+    // console.log(cuisines);
 
     for (let y in cuisines) {
       cuisinesList.push(cuisines[y]);
