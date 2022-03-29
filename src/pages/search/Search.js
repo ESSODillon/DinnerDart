@@ -10,8 +10,6 @@ export default function Search() {
   const queryParams = new URLSearchParams(queryString);
   const query = queryParams.get("q");
 
-  const url = "http://localhost:3000/restaurants?q=" + query;
-
   const [isPending] = useState(false);
   const [error] = useState(false);
   const { documents } = useCollection("restaurants");
@@ -21,7 +19,6 @@ export default function Search() {
         for (let x in documents) {
           let nameResults = document.name.toLowerCase();
           let searchQuery = query.toLowerCase();
-          console.log(document);
 
           switch (searchQuery) {
             case nameResults:
