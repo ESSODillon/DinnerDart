@@ -4,19 +4,15 @@ import { useCollection } from "../../hooks/useCollection";
 
 // Components
 import RestaurantList from "../../components/RestaurantList";
+import Searchbar from "../../components/Searchbar";
 import RestaurantFilter from "./RestaurantFilter";
-
-// Material UI
-import SearchIcon from "@mui/icons-material/Search";
 
 export default function Home() {
   const { user } = useAuthContext();
-  const [data, setData] = useState(null);
-  const [isPending, setIsPending] = useState(false);
-  const [error, setError] = useState(false);
+  const [isPending] = useState(false);
+  const [error] = useState(false);
   const { documents } = useCollection("restaurants");
   const [currentFilter, setCurrentFilter] = useState("All");
-  // const [cuisineOptions, setCuisineOptions] = useState([]);
 
   const changeFilter = (newFilter) => {
     setCurrentFilter(newFilter);
@@ -25,7 +21,7 @@ export default function Home() {
   const restaurants = documents
     ? documents.filter((document) => {
         for (let x in documents) {
-          var cuisineOptions = document.cuisines;
+          let cuisineOptions = document.cuisines;
 
           switch (currentFilter) {
             case "All":
@@ -48,18 +44,7 @@ export default function Home() {
         <h1 className="home__banner--header">
           Already know what you want {user.displayName}?
         </h1>
-        <form action="#" className="home__banner--search">
-          <input
-            type="text"
-            className="home__banner--search__input"
-            placeholder="Search"
-          />
-          <button className="home__banner--search__button">
-            <svg className="home__banner--search__icon">
-              <SearchIcon />
-            </svg>
-          </button>
-        </form>
+        <Searchbar />
       </div>
 
       <RestaurantFilter

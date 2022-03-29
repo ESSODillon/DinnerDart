@@ -24,11 +24,11 @@
     &:last-child {
       border: 0;
     }
-
-    & .active {
-      color: $color-primary;
-    }
   }
+}
+
+.restaurant-filter button.active {
+  color: $color-primary;
 }
 
 .arrow_box {

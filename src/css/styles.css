@@ -292,6 +292,20 @@ body {
         width: 2rem;
         fill: #333; }
 
+.search {
+  height: 100vh;
+  width: 100vh;
+  margin-top: 7vh; }
+
+.auth-background {
+  width: 100vw;
+  height: 93%;
+  position: absolute;
+  margin-top: 7vh;
+  background-image: linear-gradient(to left bottom, rgba(58, 51, 53, 0.9), rgba(58, 51, 53, 0.9)), url(../assets/background1.jpeg);
+  background-size: cover;
+  background-position: top; }
+
 .auth-form {
   max-width: 36rem;
   margin: 6rem auto;
@@ -330,14 +344,6 @@ body {
       color: #d95d39;
       margin-left: 0.5rem; }
 
-.auth-background {
-  width: 100vw;
-  height: 92.6%;
-  position: absolute;
-  background-image: linear-gradient(to left bottom, rgba(58, 51, 53, 0.9), rgba(58, 51, 53, 0.9)), url(../assets/background1.jpeg);
-  background-size: cover;
-  background-position: top; }
-
 .restaurant-list {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -366,8 +372,9 @@ body {
   font-size: 1.6rem; }
   .restaurant-filter button:last-child {
     border: 0; }
-  .restaurant-filter button .active {
-    color: #d95d39; }
+
+.restaurant-filter button.active {
+  color: #d95d39; }
 
 .arrow_box {
   transition: all 0.5s;

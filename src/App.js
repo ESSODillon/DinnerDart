@@ -8,6 +8,7 @@ import Cart from "./pages/cart/Cart";
 import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
 import Navbar from "./components/Navbar";
+import Search from "./pages/search/Search";
 
 function App() {
   const { user, authIsReady } = useAuthContext();
@@ -28,6 +29,10 @@ function App() {
           <Route path="/cart">
             {!user && <Redirect to="/login" />}
             {user && <Cart />}
+          </Route>
+          <Route path="/search">
+            {!user && <Redirect to="/login" />}
+            {user && <Search />}
           </Route>
           <Route path="/login">
             {user && <Redirect to="/" />}

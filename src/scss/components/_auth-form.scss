@@ -1,3 +1,18 @@
+.auth-background {
+  width: 100vw;
+  height: 93%;
+  position: absolute;
+  margin-top: 7vh;
+  background-image: linear-gradient(
+      to left bottom,
+      rgba($color-tertiary, 0.9),
+      rgba($color-tertiary, 0.9)
+    ),
+    url(../assets/background1.jpeg);
+  background-size: cover;
+  background-position: top;
+}
+
 .auth-form {
   max-width: 36rem;
   margin: 6rem auto;
@@ -53,18 +68,4 @@
       margin-left: 0.5rem;
     }
   }
-}
-
-.auth-background {
-  width: 100vw;
-  height: 92.6%;
-  position: absolute;
-  background-image: linear-gradient(
-      to left bottom,
-      rgba($color-tertiary, 0.9),
-      rgba($color-tertiary, 0.9)
-    ),
-    url(../assets/background1.jpeg);
-  background-size: cover;
-  background-position: top;
 }
