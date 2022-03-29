@@ -40,7 +40,7 @@ export default function RestaurantFilter({ currentFilter, changeFilter }) {
           className="carousel"
           itemsToShow={cuisineNum}
           pagination={false}
-          itemsToScroll={6}
+          itemsToScroll={4}
         >
           {filterList.map((f) => (
             <button

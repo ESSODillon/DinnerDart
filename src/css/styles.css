@@ -356,21 +356,23 @@ body {
   color: #3a3335;
   cursor: pointer;
   font-size: 1.6rem; }
-
-.restaurant-filter button:last-child {
-  border: 0; }
+  .restaurant-filter button:last-child {
+    border: 0; }
 
 .restaurant-filter button.active {
   color: #d95d39; }
 
 .arrow_box {
   transition: all 0.5s;
-  background-color: rgba(217, 93, 57, 0.4);
-  font-size: 1.6rem;
+  background-color: #d95d39;
+  height: 2.5rem;
+  width: 2.5rem;
   border-radius: 50%;
   color: #fdffff;
-  cursor: pointer; }
-
-.arrow_box:hover {
-  background-color: #d95d39;
-  color: #fdffff; }
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .arrow_box svg,
+  .arrow_box path {
+    color: #fdffff; }
