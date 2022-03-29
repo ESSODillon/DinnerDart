@@ -1,13 +1,20 @@
 .navigation {
-  height: 6vh;
+  height: 7vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background-color: $bg-color;
+  z-index: 100;
+  display: block;
+
   &__nav {
     display: flex;
-
     gap: 10px;
+    background-color: $bg-color;
     align-items: center;
     padding-left: 1rem;
     padding-right: 1rem;
-    background-color: $bg-color;
+
     margin: 0 auto;
     margin-bottom: 40px;
     position: relative;
