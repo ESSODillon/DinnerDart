@@ -5,10 +5,11 @@
 @import "base/typography";
 @import "base/utilities";
 
-@import "layout/navigation";
 @import "layout/home";
 @import "layout/search";
+@import "layout/menu";
 
 @import "components/auth-form";
 @import "components/restaurant-list";
 @import "components/restaurant-filter";
+@import "components/navigation";

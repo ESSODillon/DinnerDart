@@ -37,14 +37,16 @@ export default function Navbar() {
 
       <div className="navigation__background">&nbsp;</div>
 
-      <h1 className="heading-logo">
-        <img
-          src={Tray}
-          alt={"Dinner Dart logo"}
-          className="heading-logo--tray"
-        />
-        Dinner <span className="heading-logo--orange">Dart</span>
-      </h1>
+      <Link to="/">
+        <h1 className="heading-logo">
+          <img
+            src={Tray}
+            alt={"Dinner Dart logo"}
+            className="heading-logo--tray"
+          />
+          Dinner <span className="heading-logo--orange">Dart</span>
+        </h1>
+      </Link>
 
       <nav className="navigation__nav">
         <ul className="navigation__list">

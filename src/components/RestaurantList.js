@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { projectFirestore } from "../firebase/config";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useRole } from "../hooks/useRole";
-import { useTheme } from "../hooks/useTheme";
+import { useCollection } from "../hooks/useCollection";
 
 // Images
 import Trashcan from "../assets/trashcan.svg";
@@ -20,43 +20,15 @@ import Rating from "@mui/material/Rating";
 export default function RestaurantList({ restaurants }) {
   const { user } = useAuthContext();
   const { role } = useRole();
-  const [userData, setUserData] = useState(null);
-  const [isPending, setIsPending] = useState(false);
+  const { error, documents } = useCollection("users");
+  const [isPending] = useState(false);
   const [admin, setAdmin] = useState(false);
-  const [error, setError] = useState(false);
-
-  useEffect(() => {
-    setIsPending(true);
-
-    const unsub = projectFirestore.collection("users").onSnapshot(
-      (snapshot) => {
-        if (snapshot.empty) {
-          setError("Data failed to load");
-          setIsPending(false);
-        } else {
-          let results = [];
-          snapshot.docs.forEach((doc) => {
-            results.push({ id: doc.id, ...doc.data() });
-          });
-          setUserData(results);
-          setIsPending(false);
-        }
-      },
-      (err) => {
-        setError(err.message);
-        setIsPending(false);
-      }
-    );
-
-    return () => unsub();
-  }, []);
 
   // If the currently logged user's ID matches a document in the users table ID, console log that users role
-
   useEffect(() => {
-    if (userData != null) {
-      for (let x in userData) {
-        if (user.uid == userData[x].id && userData[x].role == "admin") {
+    if (documents != null) {
+      for (let x in documents) {
+        if (user.uid == documents[x].id && documents[x].role == "admin") {
           setAdmin(true);
           return;
         } else {
@@ -64,7 +36,7 @@ export default function RestaurantList({ restaurants }) {
         }
       }
     }
-  }, [userData]);
+  }, [documents]);
 
   if (restaurants.length == 0) {
     return <div className="error">No restaurants to load...</div>;
@@ -115,7 +87,7 @@ export default function RestaurantList({ restaurants }) {
                 />
                 {admin && (
                   <img
-                    className="delete"
+                    className="delete--restaurant"
                     src={Trashcan}
                     onClick={() => deleteItem(restaurant.id)}
                   />

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useCollection } from "../../hooks/useCollection";
+import { useCollection } from "../hooks/useCollection";
 import Carousel, { consts } from "react-elastic-carousel";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";

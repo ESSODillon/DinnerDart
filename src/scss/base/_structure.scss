@@ -57,9 +57,20 @@ body {
 }
 
 .delete {
-  position: absolute;
-  bottom: 9rem;
-  right: 1rem;
-  cursor: pointer;
-  filter: invert(60%);
+  &--restaurant {
+    position: absolute;
+    cursor: pointer;
+    filter: invert(60%);
+    bottom: 9rem;
+    right: 1rem;
+  }
+
+  &--menu-item {
+    position: absolute;
+    cursor: pointer;
+    top: 1rem;
+    right: 1rem;
+    background-color: white;
+    border-radius: 50%;
+  }
 }

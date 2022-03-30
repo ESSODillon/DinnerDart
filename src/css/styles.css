@@ -41,12 +41,20 @@ body {
   padding: 8px;
   margin: 10px 0; }
 
-.delete {
+.delete--restaurant {
   position: absolute;
-  bottom: 9rem;
-  right: 1rem;
   cursor: pointer;
-  filter: invert(60%); }
+  filter: invert(60%);
+  bottom: 9rem;
+  right: 1rem; }
+
+.delete--menu-item {
+  position: absolute;
+  cursor: pointer;
+  top: 1rem;
+  right: 1rem;
+  background-color: white;
+  border-radius: 50%; }
 
 .heading-logo {
   width: max-content;
@@ -99,6 +107,177 @@ body {
 
 .u-margin-top-huge {
   margin-top: 10rem !important; }
+
+.home {
+  margin-top: 8vh; }
+  .home__banner {
+    width: 100%;
+    height: 15vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-image: linear-gradient(to left bottom, rgba(217, 93, 57, 0.76), rgba(217, 93, 57, 0.76)), url(../assets/banner.jpeg);
+    background-size: cover;
+    background-position: top; }
+    .home__banner--header {
+      width: 60%;
+      font-size: 2.5rem;
+      text-align: center;
+      color: #fdffff; }
+    .home__banner--search {
+      flex: 0 0 40%;
+      display: flex;
+      width: 25%;
+      align-items: center;
+      justify-content: center; }
+      @media only screen and (max-width: 31.25em) {
+        .home__banner--search {
+          order: 1;
+          flex: 0 0 100%;
+          background-color: #c6c6c6; } }
+      .home__banner--search__input {
+        font-family: "Lato";
+        font-size: 1.4rem;
+        color: inherit;
+        background-color: #ccc;
+        border: none;
+        padding: 0.7rem 2rem;
+        border-radius: 100px;
+        width: 90%;
+        margin-right: -3.25rem;
+        transition: all 0.2s; }
+        .home__banner--search__input:focus {
+          outline: none;
+          width: 100%;
+          background-color: #f0eeee; }
+        .home__banner--search__input::-webkit-input-placeholder {
+          font-weight: 100;
+          font-family: "Lato";
+          color: #333; }
+      .home__banner--search__input:focus + .home__banner--search__button {
+        transition: all 0.2s;
+        background-color: #f0eeee; }
+      .home__banner--search__button {
+        transition: all 0.2s;
+        border: none;
+        background-color: #ccc; }
+        .home__banner--search__button:focus {
+          outline: none; }
+        .home__banner--search__button:active {
+          transform: translateY(2px); }
+      .home__banner--search__icon {
+        height: 2rem;
+        width: 2rem;
+        fill: #333; }
+
+.search {
+  height: 100vh;
+  width: 100vh;
+  margin: 5rem;
+  margin-top: 9vh; }
+
+.menu {
+  height: 100vh;
+  width: 100vh;
+  margin: 5rem;
+  margin-top: 9vh; }
+  .menu--card {
+    position: relative; }
+
+.auth-background {
+  width: 100vw;
+  height: 93%;
+  position: absolute;
+  margin-top: 8vh;
+  background-image: linear-gradient(to left bottom, rgba(58, 51, 53, 0.9), rgba(58, 51, 53, 0.9)), url(../assets/background1.jpeg);
+  background-size: cover;
+  background-position: top; }
+
+.auth-form {
+  max-width: 36rem;
+  margin: 6rem auto;
+  padding: 4rem;
+  border: 0.1rem solid #ddd;
+  box-shadow: 0.3rem 0.3rem 0.5rem rgba(0, 0, 0, 0.05);
+  background: #fff;
+  font-size: 1.6rem; }
+  .auth-form__label {
+    display: block;
+    margin: 2.4rem auto; }
+  .auth-form__span {
+    display: block;
+    margin-bottom: 0.6rem; }
+  .auth-form__span {
+    display: block;
+    margin-bottom: 0.6rem; }
+  .auth-form__input, .auth-form__textarea {
+    padding: 0.8rem 0.6rem;
+    color: #777;
+    width: 100%;
+    box-sizing: border-box;
+    border: 0.1rem solid #ddd;
+    border-radius: 0.4rem; }
+    .auth-form__input:active, .auth-form__input:focus, .auth-form__textarea:active, .auth-form__textarea:focus {
+      outline: 0.1rem solid rgba(217, 93, 57, 0.5);
+      border: 0.1rem solid rgba(217, 93, 57, 0.5); }
+  .auth-form__textarea {
+    min-height: 16rem; }
+  .auth-form__redirect {
+    margin-top: 2.5rem;
+    font-size: 1.5rem;
+    text-align: center; }
+    .auth-form__redirect--link {
+      text-decoration: none;
+      color: #d95d39;
+      margin-left: 0.5rem; }
+
+.restaurant-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 40px;
+  max-width: 1200px;
+  margin: 40px auto; }
+
+.restaurant-filter nav {
+  display: flex;
+  padding: 2.5rem;
+  background-color: #f7f7f7;
+  border-radius: 0.4rem;
+  justify-content: space-around; }
+
+.restaurant-filter p {
+  font-size: 0.9rem;
+  margin-right: 0.1rem; }
+
+.restaurant-filter button {
+  background: transparent;
+  border: 0;
+  font-family: "Lato";
+  font-weight: bold;
+  color: #3a3335;
+  cursor: pointer;
+  font-size: 1.6rem; }
+  .restaurant-filter button:last-child {
+    border: 0; }
+
+.restaurant-filter button.active {
+  color: #d95d39; }
+
+.arrow_box {
+  transition: all 0.5s;
+  background-color: #d95d39;
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 50%;
+  color: #fdffff;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .arrow_box svg,
+  .arrow_box path {
+    color: #fdffff; }
 
 .navigation {
   height: 8vh;
@@ -228,166 +407,3 @@ body {
   .navigation__checkbox:checked + .navigation__button .navigation__icon::after {
     top: 0;
     transform: rotate(-135deg); }
-
-.home {
-  margin-top: 8vh; }
-  .home__banner {
-    width: 100%;
-    height: 15vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    background-image: linear-gradient(to left bottom, rgba(217, 93, 57, 0.76), rgba(217, 93, 57, 0.76)), url(../assets/banner.jpeg);
-    background-size: cover;
-    background-position: top; }
-    .home__banner--header {
-      width: 60%;
-      font-size: 2.5rem;
-      text-align: center;
-      color: #fdffff; }
-    .home__banner--search {
-      flex: 0 0 40%;
-      display: flex;
-      width: 25%;
-      align-items: center;
-      justify-content: center; }
-      @media only screen and (max-width: 31.25em) {
-        .home__banner--search {
-          order: 1;
-          flex: 0 0 100%;
-          background-color: #c6c6c6; } }
-      .home__banner--search__input {
-        font-family: "Lato";
-        font-size: 1.4rem;
-        color: inherit;
-        background-color: #ccc;
-        border: none;
-        padding: 0.7rem 2rem;
-        border-radius: 100px;
-        width: 90%;
-        margin-right: -3.25rem;
-        transition: all 0.2s; }
-        .home__banner--search__input:focus {
-          outline: none;
-          width: 100%;
-          background-color: #f0eeee; }
-        .home__banner--search__input::-webkit-input-placeholder {
-          font-weight: 100;
-          font-family: "Lato";
-          color: #333; }
-      .home__banner--search__input:focus + .home__banner--search__button {
-        transition: all 0.2s;
-        background-color: #f0eeee; }
-      .home__banner--search__button {
-        transition: all 0.2s;
-        border: none;
-        background-color: #ccc; }
-        .home__banner--search__button:focus {
-          outline: none; }
-        .home__banner--search__button:active {
-          transform: translateY(2px); }
-      .home__banner--search__icon {
-        height: 2rem;
-        width: 2rem;
-        fill: #333; }
-
-.search {
-  height: 100vh;
-  width: 100vh;
-  margin: 5rem;
-  margin-top: 9vh; }
-
-.auth-background {
-  width: 100vw;
-  height: 93%;
-  position: absolute;
-  margin-top: 8vh;
-  background-image: linear-gradient(to left bottom, rgba(58, 51, 53, 0.9), rgba(58, 51, 53, 0.9)), url(../assets/background1.jpeg);
-  background-size: cover;
-  background-position: top; }
-
-.auth-form {
-  max-width: 36rem;
-  margin: 6rem auto;
-  padding: 4rem;
-  border: 0.1rem solid #ddd;
-  box-shadow: 0.3rem 0.3rem 0.5rem rgba(0, 0, 0, 0.05);
-  background: #fff;
-  font-size: 1.6rem; }
-  .auth-form__label {
-    display: block;
-    margin: 2.4rem auto; }
-  .auth-form__span {
-    display: block;
-    margin-bottom: 0.6rem; }
-  .auth-form__span {
-    display: block;
-    margin-bottom: 0.6rem; }
-  .auth-form__input, .auth-form__textarea {
-    padding: 0.8rem 0.6rem;
-    color: #777;
-    width: 100%;
-    box-sizing: border-box;
-    border: 0.1rem solid #ddd;
-    border-radius: 0.4rem; }
-    .auth-form__input:active, .auth-form__input:focus, .auth-form__textarea:active, .auth-form__textarea:focus {
-      outline: 0.1rem solid rgba(217, 93, 57, 0.5);
-      border: 0.1rem solid rgba(217, 93, 57, 0.5); }
-  .auth-form__textarea {
-    min-height: 16rem; }
-  .auth-form__redirect {
-    margin-top: 2.5rem;
-    font-size: 1.5rem;
-    text-align: center; }
-    .auth-form__redirect--link {
-      text-decoration: none;
-      color: #d95d39;
-      margin-left: 0.5rem; }
-
-.restaurant-list {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 40px;
-  max-width: 1200px;
-  margin: 40px auto; }
-
-.restaurant-filter nav {
-  display: flex;
-  padding: 2.5rem;
-  background-color: #f7f7f7;
-  border-radius: 0.4rem;
-  justify-content: space-around; }
-
-.restaurant-filter p {
-  font-size: 0.9rem;
-  margin-right: 0.1rem; }
-
-.restaurant-filter button {
-  background: transparent;
-  border: 0;
-  font-family: "Lato";
-  font-weight: bold;
-  color: #3a3335;
-  cursor: pointer;
-  font-size: 1.6rem; }
-  .restaurant-filter button:last-child {
-    border: 0; }
-
-.restaurant-filter button.active {
-  color: #d95d39; }
-
-.arrow_box {
-  transition: all 0.5s;
-  background-color: #d95d39;
-  height: 2.5rem;
-  width: 2.5rem;
-  border-radius: 50%;
-  color: #fdffff;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center; }
-  .arrow_box svg,
-  .arrow_box path {
-    color: #fdffff; }

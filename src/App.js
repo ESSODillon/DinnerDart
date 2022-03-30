@@ -9,6 +9,7 @@ import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
 import Navbar from "./components/Navbar";
 import Search from "./pages/search/Search";
+import Menu from "./pages/menu/Menu";
 
 function App() {
   const { user, authIsReady } = useAuthContext();
@@ -33,6 +34,10 @@ function App() {
           <Route path="/search">
             {!user && <Redirect to="/login" />}
             {user && <Search />}
+          </Route>
+          <Route path="/restaurants/:id">
+            {!user && <Redirect to="/login" />}
+            {user && <Menu />}
           </Route>
           <Route path="/login">
             {user && <Redirect to="/" />}
