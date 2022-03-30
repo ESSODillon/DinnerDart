@@ -44,11 +44,11 @@ export default function MenuList({ items }) {
   };
 
   return (
-    <div className="item-list">
+    <div className="menu--list">
       {items.length === 0 && <p>No items yet!</p>}
       {items.map((item) => (
         <Card
-          sx={{ maxWidth: 345, display: "flex" }}
+          sx={{ maxWidth: "45rem", display: "flex" }}
           key={item.id}
           style={{ fontSize: "1.6rem", fontFamily: "Lato" }}
           className="menu--card"
