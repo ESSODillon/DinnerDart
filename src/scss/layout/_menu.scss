@@ -15,5 +15,13 @@
   &--card {
     position: relative;
     margin-bottom: 4rem;
+
+    &__price {
+      background-color: $bg-color;
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+      font-weight: bold;
+    }
   }
 }

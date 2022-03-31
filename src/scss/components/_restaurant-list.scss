@@ -2,6 +2,15 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 40px;
+  justify-items: center;
   max-width: 1200px;
   margin: 40px auto;
+
+  @include respond(tablet-landscape) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include respond(tablet-phone) {
+    grid-template-columns: 1fr;
+  }
 }

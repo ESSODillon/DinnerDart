@@ -55,7 +55,7 @@ export default function MenuList({ items }) {
         >
           <Box sx={{ display: "flex", flexDirection: "column" }}>
             <CardContent sx={{ flex: "1 0 auto" }}>
-              <Typography component="div" variant="h5">
+              <Typography sx={{ mb: 1.5 }} component="div" variant="h5">
                 {item.name}
               </Typography>
               <Typography
@@ -66,23 +66,28 @@ export default function MenuList({ items }) {
                 {item.description}
               </Typography>
             </CardContent>
-            <Box sx={{ display: "flex", alignItems: "center", pl: 1, pb: 1 }}>
-              {item.price}
 
-              {admin && (
-                <img
-                  className="delete--menu-item"
-                  src={Trashcan}
-                  onClick={() => deleteItem(item.id)}
-                />
-              )}
-            </Box>
+            {admin && (
+              <img
+                className="delete--menu-item"
+                src={Trashcan}
+                onClick={() => deleteItem(item.id)}
+              />
+            )}
+
+            <Typography
+              variant="subtitle1"
+              component="div"
+              className="menu--card__price"
+            >
+              {item.price}
+            </Typography>
           </Box>
           <CardMedia
             component="img"
             sx={{ width: 151 }}
             image={item.image}
-            alt="Live from space album cover"
+            alt={item.name}
           />
         </Card>
       ))}

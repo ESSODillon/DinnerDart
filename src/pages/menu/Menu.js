@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useDocument } from "../../hooks/useDocument";
 import { useCollection } from "../../hooks/useCollection";
 import MenuList from "../../components/MenuList";
+import { Typography } from "@mui/material";
 
 export default function Menu() {
   const { id } = useParams();
@@ -26,7 +27,9 @@ export default function Menu() {
       {isPending && <p className="loading">Loading...</p>}
       {document && (
         <>
-          <h1>{document.name}</h1>
+          <Typography sx={{ mb: 10, mt: 15 }} variant="h3">
+            {document.name}
+          </Typography>
           <MenuList items={documents} />
         </>
       )}

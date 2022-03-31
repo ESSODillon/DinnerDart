@@ -191,6 +191,12 @@ body {
   .menu--card {
     position: relative;
     margin-bottom: 4rem; }
+    .menu--card__price {
+      background-color: #fdffff;
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+      font-weight: bold; }
 
 .auth-background {
   width: 100vw;
@@ -243,8 +249,12 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 40px;
+  justify-items: center;
   max-width: 1200px;
   margin: 40px auto; }
+  @media only screen and (max-width: 75em) {
+    .restaurant-list {
+      grid-template-columns: 1fr 1fr; } }
 
 .restaurant-filter nav {
   display: flex;
