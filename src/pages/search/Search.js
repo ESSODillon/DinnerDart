@@ -16,17 +16,10 @@ export default function Search() {
 
   const restaurants = documents
     ? documents.filter((document) => {
-        for (let x in documents) {
-          let nameResults = document.name.toLowerCase();
-          let searchQuery = query.toLowerCase();
+        let nameResults = document.name.toLocaleUpperCase();
+        let searchQuery = query.toLocaleUpperCase();
 
-          switch (searchQuery) {
-            case nameResults:
-              return nameResults.includes(searchQuery);
-            default:
-              break;
-          }
-        }
+        return nameResults.includes(searchQuery);
       })
     : null;
 

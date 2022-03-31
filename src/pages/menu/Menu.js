@@ -27,7 +27,7 @@ export default function Menu() {
       {isPending && <p className="loading">Loading...</p>}
       {document && (
         <>
-          <Typography sx={{ mb: 10, mt: 15 }} variant="h3">
+          <Typography sx={{ mb: 10, mt: 15, ml: "5rem" }} variant="h3">
             {document.name}
           </Typography>
           <MenuList items={documents} />

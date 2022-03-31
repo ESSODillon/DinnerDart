@@ -8,6 +8,7 @@ import Cart from "./pages/cart/Cart";
 import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import Search from "./pages/search/Search";
 import Menu from "./pages/menu/Menu";
 
@@ -48,6 +49,7 @@ function App() {
             {!user && <Signup />}
           </Route>
         </Switch>
+        {user && <Footer />}
       </BrowserRouter>
     </div>
   );
