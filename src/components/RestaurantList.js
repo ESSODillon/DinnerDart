@@ -50,7 +50,7 @@ export default function RestaurantList({ restaurants }) {
     <div className="restaurant-list">
       {restaurants.map((restaurant) => (
         <Card
-          sx={{ minWidth: 345 }}
+          sx={{ minWidth: 345, mb: "5rem" }}
           key={restaurant.id}
           style={{ fontSize: "1.6rem", fontFamily: "Lato" }}
         >

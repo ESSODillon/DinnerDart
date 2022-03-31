@@ -2,11 +2,13 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
-import Button from "@mui/material/Button";
 
 // Images
 import Tray from "../assets/food-tray.svg";
 import Bag from "../assets/shopping-bag.svg";
+
+// Material UI
+import Avatar from "@mui/material/Avatar";
 
 export default function Navbar() {
   const [activeNav, setActiveNav] = useState(false);
@@ -57,8 +59,13 @@ export default function Navbar() {
                 id="navi-link"
                 onClick={toggleNav}
               >
-                <Link to="/" className="navigation__link">
-                  Home
+                <Link to="/profile" className="navigation__link">
+                  <Avatar
+                    sx={{ mr: "2rem" }}
+                    alt="Profile Picture"
+                    src={user.photoURL}
+                  />{" "}
+                  {user.displayName}
                 </Link>
               </li>
               <li
@@ -66,10 +73,11 @@ export default function Navbar() {
                 id="navi-link"
                 onClick={toggleNav}
               >
-                <Link to="/about" className="navigation__link">
-                  About
+                <Link to="/" className="navigation__link">
+                  Home
                 </Link>
               </li>
+
               <li
                 className="navigation__item"
                 id="navi-link"

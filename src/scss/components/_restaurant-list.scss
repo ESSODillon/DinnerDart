@@ -1,16 +1,13 @@
 .restaurant-list {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 40px;
-  justify-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
   max-width: 1200px;
   margin: 40px auto;
 
   @include respond(tablet-landscape) {
-    grid-template-columns: 1fr 1fr;
   }
 
   @include respond(tablet-phone) {
-    grid-template-columns: 1fr;
   }
 }
