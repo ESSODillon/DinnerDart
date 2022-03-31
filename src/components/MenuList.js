@@ -48,13 +48,17 @@ export default function MenuList({ items }) {
       {items.length === 0 && <p>No items yet!</p>}
       {items.map((item) => (
         <Card
-          sx={{ maxWidth: "45rem", display: "flex" }}
+          sx={{
+            width: "45rem",
+            display: "flex",
+            justifyContent: "space-between",
+          }}
           key={item.id}
           style={{ fontSize: "1.6rem", fontFamily: "Lato" }}
           className="menu--card"
         >
           <Box sx={{ display: "flex", flexDirection: "column" }}>
-            <CardContent sx={{ flex: "1 0 auto" }}>
+            <CardContent>
               <Typography sx={{ mb: 1.5 }} component="div" variant="h5">
                 {item.name}
               </Typography>
@@ -85,7 +89,7 @@ export default function MenuList({ items }) {
           </Box>
           <CardMedia
             component="img"
-            sx={{ width: 151 }}
+            sx={{ width: "25%" }}
             image={item.image}
             alt={item.name}
           />

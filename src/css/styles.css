@@ -128,7 +128,7 @@ body {
     .home__banner--search {
       flex: 0 0 40%;
       display: flex;
-      width: 25%;
+      width: 35%;
       align-items: center;
       justify-content: center; }
       .home__banner--search__input {
@@ -139,7 +139,7 @@ body {
         border: none;
         padding: 0.7rem 2rem;
         border-radius: 100px;
-        width: 90%;
+        width: 100%;
         margin-right: -3.25rem;
         transition: all 0.2s; }
         .home__banner--search__input:focus {
@@ -175,7 +175,8 @@ body {
 .menu {
   height: 100%;
   width: 100vw;
-  margin-top: 9vh; }
+  margin-top: 9vh;
+  transition: all 2s; }
   .menu--list {
     display: flex;
     width: 80%;
@@ -184,7 +185,11 @@ body {
     margin: 0 auto; }
   .menu--card {
     position: relative;
-    margin-bottom: 4rem; }
+    margin-bottom: 4rem;
+    cursor: pointer; }
+    .menu--card:hover {
+      border: 2px solid #d95d39;
+      transform: translateY(-1rem); }
     .menu--card__price {
       background-color: #fdffff;
       position: absolute;
@@ -355,7 +360,7 @@ body {
     text-align: center;
     width: 100%; }
   .navigation__item {
-    margin: 2rem; }
+    margin: 1rem; }
   .navigation__link:link, .navigation__link:visited {
     display: flex;
     font-size: 3rem;
