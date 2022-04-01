@@ -175,8 +175,7 @@ body {
 .menu {
   height: 100%;
   width: 100vw;
-  margin-top: 9vh;
-  transition: all 2s; }
+  margin-top: 9vh; }
   .menu--list {
     display: flex;
     width: 80%;
@@ -188,6 +187,7 @@ body {
     margin-bottom: 4rem;
     cursor: pointer; }
     .menu--card:hover {
+      transition: all 0.2s;
       border: 2px solid #d95d39;
       transform: translateY(-1rem); }
     .menu--card__price {

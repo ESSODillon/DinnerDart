@@ -2,7 +2,6 @@
   height: 100%;
   width: 100vw;
   margin-top: 9vh;
-  transition: all 2s;
 
   &--list {
     display: flex;
@@ -18,6 +17,7 @@
     cursor: pointer;
 
     &:hover {
+      transition: all 0.2s;
       border: 2px solid $color-primary;
       transform: translateY(-1rem);
     }
