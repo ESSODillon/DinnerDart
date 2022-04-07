@@ -175,10 +175,11 @@ body {
 .menu {
   height: 100%;
   width: 100vw;
-  margin-top: 9vh; }
+  margin-top: 9vh;
+  position: relative; }
   .menu--list {
     display: flex;
-    width: 80%;
+    width: 100%;
     justify-content: space-evenly;
     flex-wrap: wrap;
     margin: 0 auto; }
@@ -196,6 +197,13 @@ body {
       right: 1rem;
       top: 1rem;
       font-weight: bold; }
+  .menu--banner {
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 0;
+    background-color: #d95d39;
+    width: 100vw;
+    height: 10rem; }
 
 .profile {
   width: 100vw;

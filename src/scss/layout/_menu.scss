@@ -2,10 +2,11 @@
   height: 100%;
   width: 100vw;
   margin-top: 9vh;
+  position: relative;
 
   &--list {
     display: flex;
-    width: 80%;
+    width: 100%;
     justify-content: space-evenly;
     flex-wrap: wrap;
     margin: 0 auto;
@@ -29,5 +30,14 @@
       top: 1rem;
       font-weight: bold;
     }
+  }
+
+  &--banner {
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 0;
+    background-color: $color-primary;
+    width: 100vw;
+    height: 10rem;
   }
 }

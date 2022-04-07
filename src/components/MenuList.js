@@ -19,6 +19,7 @@ import ButtonGroup from "@mui/material/ButtonGroup";
 import Button from "@mui/material/Button";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
+import MenuBanner from "./MenuBanner";
 
 export default function MenuList({ items }) {
   const { user } = useAuthContext();
@@ -136,7 +137,7 @@ export default function MenuList({ items }) {
           </Card>
         </Badge>
       ))}
-      {cart.length > 0 && <Button>Add to Cart</Button>}
+      {cart.length > 0 && <MenuBanner>Add to Cart</MenuBanner>}
     </div>
   );
 }
