@@ -1,6 +1,5 @@
 // React, Firebase and Router
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import { projectFirestore } from "../firebase/config";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useRole } from "../hooks/useRole";
@@ -20,47 +19,53 @@ import ButtonGroup from "@mui/material/ButtonGroup";
 import Button from "@mui/material/Button";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-import { createTheme } from "@mui/material/styles";
 
 export default function MenuList({ items }) {
   const { user } = useAuthContext();
   const { role } = useRole();
   const { error, documents } = useCollection("users");
   const [isPending] = useState(false);
-  const [admin, setAdmin] = useState(false);
-  const [count, setCount] = React.useState(0);
-
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: "#d95d39",
-      },
-    },
-  });
-
-  // If the currently logged user's ID matches a document in the users table ID, console log that users role
-  useEffect(() => {
-    if (documents != null) {
-      for (let x in documents) {
-        if (user.uid == documents[x].id && documents[x].role == "admin") {
-          setAdmin(true);
-          return;
-        } else {
-          setAdmin(false);
-        }
-      }
-    }
-  }, [documents]);
+  const [count, setCount] = useState(0);
+  const [cart, setCart] = useState([]);
 
   const deleteItem = (id) => {
     projectFirestore.collection("restaurants").doc(id).delete();
+  };
+
+  const itemCount = (item) => {
+    let counter = 0;
+    for (let i = 0; i < cart.length; i++) {
+      if (cart[i] === item) {
+        counter++;
+      }
+    }
+    return counter;
+  };
+
+  const handleAddItem = (item) => {
+    cart.push(item);
+    setCount(cart.length);
+  };
+
+  const handleRemoveItem = (item) => {
+    if (cart.includes(item)) {
+      cart.splice(cart.indexOf(item), 1);
+      setCount(cart.length);
+    } else {
+      console.log("Item not found in cart");
+    }
   };
 
   return (
     <div className="menu--list">
       {items.length === 0 && <p>No items yet!</p>}
       {items.map((item) => (
-        <Badge fontSize="large" color="primary" badgeContent={count}>
+        <Badge
+          key={item.id}
+          fontSize="large"
+          color="primary"
+          badgeContent={itemCount(item)}
+        >
           <Card
             sx={{
               width: "45rem",
@@ -68,7 +73,6 @@ export default function MenuList({ items }) {
               display: "flex",
               justifyContent: "space-between",
             }}
-            key={item.id}
             style={{ fontSize: "1.6rem", fontFamily: "Lato" }}
             className="menu--card"
           >
@@ -91,7 +95,7 @@ export default function MenuList({ items }) {
                   <Button
                     aria-label="increase"
                     onClick={() => {
-                      setCount(count + 1);
+                      handleAddItem(item);
                     }}
                   >
                     <AddIcon fontSize="small" />
@@ -99,7 +103,7 @@ export default function MenuList({ items }) {
                   <Button
                     aria-label="reduce"
                     onClick={() => {
-                      setCount(Math.max(count - 1, 0));
+                      handleRemoveItem(item);
                     }}
                   >
                     <RemoveIcon fontSize="small" />
@@ -107,7 +111,7 @@ export default function MenuList({ items }) {
                 </ButtonGroup>
               </CardContent>
 
-              {admin && (
+              {role === "admin" && (
                 <img
                   className="delete--menu-item"
                   src={Trashcan}
@@ -132,6 +136,7 @@ export default function MenuList({ items }) {
           </Card>
         </Badge>
       ))}
+      {cart.length > 0 && <Button>Add to Cart</Button>}
     </div>
   );
 }

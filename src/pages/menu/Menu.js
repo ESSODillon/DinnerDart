@@ -11,8 +11,6 @@ export default function Menu() {
   const { documents } = useCollection(`restaurants/${id}/menu`);
   const { error, document } = useDocument("restaurants", id);
 
-  console.log(documents);
-
   if (error) {
     return <div className="error">{error}</div>;
   }
