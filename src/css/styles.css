@@ -200,10 +200,20 @@ body {
   .menu--banner {
     position: -webkit-sticky;
     position: sticky;
+    z-index: 2000;
     bottom: 0;
     background-color: #d95d39;
     width: 100vw;
-    height: 10rem; }
+    height: 100%;
+    padding: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around; }
+    .menu--banner__list {
+      list-style: none; }
+      .menu--banner__list--item {
+        color: #fdffff;
+        font-size: 1.25rem; }
 
 .profile {
   width: 100vw;

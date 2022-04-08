@@ -95,6 +95,7 @@ export default function MenuList({ items }) {
                 >
                   <Button
                     aria-label="increase"
+                    id="add-button"
                     onClick={() => {
                       handleAddItem(item);
                     }}
@@ -103,6 +104,7 @@ export default function MenuList({ items }) {
                   </Button>
                   <Button
                     aria-label="reduce"
+                    id="reduce-button"
                     onClick={() => {
                       handleRemoveItem(item);
                     }}
@@ -125,7 +127,7 @@ export default function MenuList({ items }) {
                 component="div"
                 className="menu--card__price"
               >
-                {item.price}
+                ${item.price}
               </Typography>
             </Box>
             <CardMedia
@@ -137,7 +139,7 @@ export default function MenuList({ items }) {
           </Card>
         </Badge>
       ))}
-      {cart.length > 0 && <MenuBanner>Add to Cart</MenuBanner>}
+      {cart.length > 0 && <MenuBanner cart={cart}>Add to Cart</MenuBanner>}
     </div>
   );
 }
