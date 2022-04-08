@@ -3,12 +3,11 @@ import { useEffect, useState } from "react";
 
 export default function MenuBanner({ cart }) {
   const [total, setTotal] = useState(0);
-  const addButton = document.getElementById("add-button");
-  const reduceButton = document.getElementById("reduce-button");
+  const addButtons = document.getElementsByClassName("add-button");
+  const reduceButtons = document.getElementsByClassName("reduce-button");
 
   const changeTotal = () => {
     let prices = [];
-    console.log("I'm working!");
 
     for (let i = 0; i < cart.length; i++) {
       prices.push(cart[i].price);
@@ -17,9 +16,14 @@ export default function MenuBanner({ cart }) {
   };
 
   useEffect(() => {
-    addButton.addEventListener("click", changeTotal);
-    reduceButton.addEventListener("click", changeTotal);
-  }, [addButton, reduceButton]);
+    Array.from(addButtons).forEach((button) => {
+      button.addEventListener("click", changeTotal);
+    });
+
+    Array.from(reduceButtons).forEach((button) => {
+      button.addEventListener("click", changeTotal);
+    });
+  }, [addButtons, reduceButtons]);
 
   return (
     <div className="menu--banner">

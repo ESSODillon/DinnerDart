@@ -95,7 +95,7 @@ export default function MenuList({ items }) {
                 >
                   <Button
                     aria-label="increase"
-                    id="add-button"
+                    className="add-button"
                     onClick={() => {
                       handleAddItem(item);
                     }}
@@ -104,7 +104,7 @@ export default function MenuList({ items }) {
                   </Button>
                   <Button
                     aria-label="reduce"
-                    id="reduce-button"
+                    className="reduce-button"
                     onClick={() => {
                       handleRemoveItem(item);
                     }}
