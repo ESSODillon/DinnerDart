@@ -1,18 +1,29 @@
 import { Button } from "@mui/material";
+import { useFirestore } from "../hooks/useFirestore";
+import { useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 export default function MenuBanner({ cart }) {
-  const [total, setTotal] = useState(0);
+  const [total, setTotal] = useState(cart[0].price);
+  const history = useHistory();
+  const { user, authIsReady } = useAuthContext();
+  const { addDocument, response } = useFirestore(`users/${user.uid}`);
   const addButtons = document.getElementsByClassName("add-button");
   const reduceButtons = document.getElementsByClassName("reduce-button");
 
-  const changeTotal = () => {
-    let prices = [];
+  function getSum(total, num) {
+    return total + Math.round(num * 10) / 10;
+  }
 
+  let prices = [];
+
+  const changeTotal = () => {
     for (let i = 0; i < cart.length; i++) {
       prices.push(cart[i].price);
-      setTotal(prices.reduce((a, b) => a + b, 0));
     }
+
+    setTotal(prices.reduce(getSum, 1));
   };
 
   useEffect(() => {
@@ -25,11 +36,21 @@ export default function MenuBanner({ cart }) {
     });
   }, [addButtons, reduceButtons]);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    await addDocument(prices);
+
+    if (!response.error) {
+      history.push("/");
+    }
+  };
+
   return (
-    <div className="menu--banner">
+    <form onSubmit={handleSubmit} className="menu--banner">
       <ul className="menu--banner__list">
         {cart.map((item) => (
-          <li className="menu--banner__list--item">
+          <li key={item.id} className="menu--banner__list--item">
             {item.name} ~ ${item.price}
           </li>
         ))}
@@ -40,6 +61,7 @@ export default function MenuBanner({ cart }) {
       <Button
         variant="contained"
         size="large"
+        type="submit"
         style={{
           background: "#fdffff",
           borderRadius: "10rem",
@@ -56,6 +78,6 @@ export default function MenuBanner({ cart }) {
       >
         Add to Cart
       </Button>
-    </div>
+    </form>
   );
 }
