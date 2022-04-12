@@ -8,15 +8,13 @@ export default function MenuBanner({ cart }) {
   const [total, setTotal] = useState(cart[0].price);
   const history = useHistory();
   const { user, authIsReady } = useAuthContext();
-  const { addDocument, response } = useFirestore(`users/${user.uid}`);
+  const { addDocument, response } = useFirestore(`users/${user.uid}/cart`);
   const addButtons = document.getElementsByClassName("add-button");
   const reduceButtons = document.getElementsByClassName("reduce-button");
 
   function getSum(total, num) {
     return total + Math.round(num * 10) / 10;
   }
-
-  let prices = [];
 
   const changeTotal = () => {
     for (let i = 0; i < cart.length; i++) {
@@ -25,6 +23,8 @@ export default function MenuBanner({ cart }) {
 
     setTotal(prices.reduce(getSum, 1));
   };
+
+  let prices = [];
 
   useEffect(() => {
     Array.from(addButtons).forEach((button) => {
@@ -39,10 +39,13 @@ export default function MenuBanner({ cart }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await addDocument(prices);
+    for (let i = 0; i < cart.length; i++) {
+      console.log(cart);
+      await addDocument(cart[i]);
+    }
 
     if (!response.error) {
-      history.push("/");
+      history.push("/cart");
     }
   };
 
