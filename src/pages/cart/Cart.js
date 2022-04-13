@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useCollection } from "../../hooks/useCollection";
 import CartList from "../../components/CartList";
 import { useAuthContext } from "../../hooks/useAuthContext";
+import { Typography } from "@mui/material";
 
 export default function Cart() {
   const { user } = useAuthContext();
@@ -20,7 +21,9 @@ export default function Cart() {
     <div className="menu">
       {/* {error && <p className="error">{error}</p>} */}
       {isPending && <p className="loading">Loading...</p>}
-      <h1>Cart</h1>
+      <Typography sx={{ mb: 10, mt: 15, ml: "5rem" }} variant="h3">
+        Cart
+      </Typography>
       {documents != null && <CartList items={documents} />}
     </div>
   );

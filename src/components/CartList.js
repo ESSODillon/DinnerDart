@@ -9,16 +9,30 @@ import { useCollection } from "../hooks/useCollection";
 import Trashcan from "../assets/trashcan.svg";
 
 // Material UI
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import Collapse from "@mui/material/Collapse";
+import StarBorder from "@mui/icons-material/StarBorder";
+import InboxIcon from "@mui/icons-material/MoveToInbox";
+import ListSubheader from "@mui/material/ListSubheader";
+import ExpandLess from "@mui/icons-material/ExpandLess";
+import ExpandMore from "@mui/icons-material/ExpandMore";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
+import ListItemAvatar from "@mui/material/ListItemAvatar";
+import Avatar from "@mui/material/Avatar";
+import Divider from "@mui/material/Divider";
 
 export default function CartList({ items }) {
   const { user } = useAuthContext();
   const { role } = useRole();
   const [isPending] = useState(false);
+  const [open, setOpen] = useState(true);
+
+  const handleClick = () => {
+    setOpen(!open);
+  };
 
   const deleteItem = (id) => {
     projectFirestore.collection(`users/${user.uid}/cart`).doc(id).delete();
@@ -27,56 +41,41 @@ export default function CartList({ items }) {
   return (
     <div className="menu--list">
       {items.length === 0 && <p>No items yet!</p>}
-      {items.map((item) => (
-        <Card
-          key={item.id}
-          sx={{
-            width: "45rem",
-            minHeight: "13rem",
-            display: "flex",
-            justifyContent: "space-between",
-          }}
-          style={{ fontSize: "1.6rem", fontFamily: "Lato" }}
-          className="menu--card"
-        >
-          <Box sx={{ display: "flex", flexDirection: "column" }}>
-            <CardContent>
-              <Typography sx={{ mb: 1.5 }} component="div" variant="h5">
-                {item.name}
-              </Typography>
-              <Typography
-                variant="subtitle1"
-                color="text.secondary"
-                component="div"
-              >
-                {item.description}
-              </Typography>
-            </CardContent>
+      <List
+        sx={{
+          width: "100%",
+          maxWidth: 600,
+          bgcolor: "background.paper",
+        }}
+        subheader={
+          <ListSubheader component="div" id="nested-list-subheader">
+            {user.displayName}'s Cart
+          </ListSubheader>
+        }
+      >
+        {items.map((item) => (
+          <>
+            <ListItemButton onClick={handleClick}>
+              <ListItemAvatar>
+                <Avatar>
+                  <img src={item.image} />
+                </Avatar>
+              </ListItemAvatar>
+              <ListItemText primary={item.name} secondary={item.price} />
+              {open ? <ExpandLess /> : <ExpandMore />}
+            </ListItemButton>
 
-            {role === "admin" && (
-              <img
-                className="delete--menu-item"
-                src={Trashcan}
-                onClick={() => deleteItem(item.id)}
-              />
-            )}
-
-            <Typography
-              variant="subtitle1"
-              component="div"
-              className="menu--card__price"
-            >
-              ${item.price}
-            </Typography>
-          </Box>
-          <CardMedia
-            component="img"
-            sx={{ width: "25%" }}
-            image={item.image}
-            alt={item.name}
-          />
-        </Card>
-      ))}
+            <Collapse in={open} timeout="auto" unmountOnExit>
+              <List component="div" disablePadding>
+                <ListItem sx={{ pl: 4 }}>
+                  <ListItemText primary={item.description} />
+                </ListItem>
+              </List>
+            </Collapse>
+            <Divider variant="inset" component="li" />
+          </>
+        ))}
+      </List>
     </div>
   );
 }
