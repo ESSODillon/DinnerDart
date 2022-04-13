@@ -4,6 +4,8 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import { projectFirestore } from "../firebase/config";
 import { useRole } from "../hooks/useRole";
 import { useCollection } from "../hooks/useCollection";
+import { useFirestore } from "../hooks/useFirestore";
+import { useHistory } from "react-router-dom";
 
 // Images
 import Trashcan from "../assets/trashcan.svg";
@@ -19,11 +21,14 @@ import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Divider from "@mui/material/Divider";
+import { Button } from "@mui/material";
 
 export default function CartList({ items }) {
   const { user } = useAuthContext();
   const { role } = useRole();
+  const history = useHistory();
   const [isPending] = useState(false);
+  const { addDocument, response } = useFirestore("orders");
   const [open, setOpen] = useState(false);
   const [clickedItem, setClickedItem] = useState(null);
 
@@ -34,6 +39,16 @@ export default function CartList({ items }) {
 
   const deleteItem = (id) => {
     projectFirestore.collection(`users/${user.uid}/cart`).doc(id).delete();
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    await addDocument(items);
+
+    if (!response.error) {
+      history.push("/");
+    }
   };
 
   return (
@@ -82,6 +97,31 @@ export default function CartList({ items }) {
             <Divider variant="inset" component="li" />
           </>
         ))}
+        <Button
+          variant="contained"
+          onClick={handleSubmit}
+          style={{
+            background: "#d95d39",
+            padding: "0.8rem 1.2rem",
+            borderRadius: "10rem",
+            fontFamily: "Lato",
+            color: "#fdffff",
+            cursor: "pointer",
+            fontSize: "1.8rem",
+            border: "none",
+            textTransform: "capitalize",
+            lineHeight: "2rem",
+            display: "block",
+            margin: "0 auto",
+            marginTop: "5rem",
+            marginBottom: "5rem",
+            width: "60%",
+          }}
+          size="large"
+          margin="normal"
+        >
+          Place Order
+        </Button>
       </List>
     </div>
   );
