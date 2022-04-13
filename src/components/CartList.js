@@ -47,6 +47,13 @@ export default function CartList({ items }) {
     await addDocument(items);
 
     if (!response.error) {
+      for (let i = 0; i < items.length; i++) {
+        projectFirestore
+          .collection(`users/${user.uid}/cart`)
+          .doc(items[i].id)
+          .delete();
+      }
+
       history.push("/");
     }
   };
