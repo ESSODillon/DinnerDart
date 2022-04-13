@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { useAuthContext } from "./hooks/useAuthContext";
+import { useRole } from "./hooks/useRole";
 
 // Pages and Components
 import Home from "./pages/home/Home";
@@ -11,9 +12,11 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Search from "./pages/search/Search";
 import Menu from "./pages/menu/Menu";
+import Orders from "./pages/orders/Orders";
 
 function App() {
   const { user, authIsReady } = useAuthContext();
+  const { role } = useRole();
 
   return (
     <div className="App">
@@ -39,6 +42,10 @@ function App() {
           <Route path="/restaurants/:id">
             {!user && <Redirect to="/login" />}
             {user && <Menu />}
+          </Route>
+          <Route path="/orders">
+            {!user && <Redirect to="/login" />}
+            {role === "darter" && <Orders />}
           </Route>
           <Route path="/login">
             {user && <Redirect to="/" />}

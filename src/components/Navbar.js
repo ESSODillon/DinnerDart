@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
+import { useRole } from "../hooks/useRole";
 
 // Images
 import Tray from "../assets/food-tray.svg";
@@ -14,6 +15,7 @@ export default function Navbar() {
   const [activeNav, setActiveNav] = useState(false);
   const { logout, isPending } = useLogout();
   const { user, authIsReady } = useAuthContext();
+  const { role } = useRole();
 
   const toggleNav = () => {
     if (activeNav) {
@@ -68,6 +70,17 @@ export default function Navbar() {
                   {user.displayName}
                 </Link>
               </li>
+              {role === "darter" && (
+                <li
+                  className="navigation__item"
+                  id="navi-link"
+                  onClick={toggleNav}
+                >
+                  <Link to="/orders" className="navigation__link">
+                    Orders
+                  </Link>
+                </li>
+              )}
               <li
                 className="navigation__item"
                 id="navi-link"

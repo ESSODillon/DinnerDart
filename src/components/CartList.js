@@ -61,75 +61,77 @@ export default function CartList({ items }) {
   return (
     <div className="cart--list">
       {items.length === 0 && <p>Your cart is empty</p>}
-      <List
-        sx={{
-          width: "100%",
-          maxWidth: 600,
-          bgcolor: "background.paper",
-        }}
-      >
-        {items.map((item, i) => (
-          <>
-            <div className="cart">
-              <div className="cart--delete">
-                <img src={Trashcan} onClick={() => deleteItem(item.id)} />
-                {/* <DeleteIcon /> */}
-              </div>
-              <ListItemButton onClick={() => handleClick(item.id)}>
-                <ListItemAvatar>
-                  <Avatar variant="square">
-                    <img src={item.image} />
-                  </Avatar>
-                </ListItemAvatar>
-                <ListItemText primary={item.name} secondary={item.price} />
-                {open && clickedItem === item.id ? (
-                  <ExpandLess />
-                ) : (
-                  <ExpandMore />
-                )}
-              </ListItemButton>
-            </div>
-
-            <Collapse
-              in={open && clickedItem === item.id}
-              timeout="auto"
-              unmountOnExit
-            >
-              <List component="div" disablePadding>
-                <ListItem sx={{ pl: 4 }}>
-                  <ListItemText primary={item.description} />
-                </ListItem>
-              </List>
-            </Collapse>
-            <Divider variant="inset" component="li" />
-          </>
-        ))}
-        <Button
-          variant="contained"
-          onClick={handleSubmit}
-          style={{
-            background: "#d95d39",
-            padding: "0.8rem 1.2rem",
-            borderRadius: "10rem",
-            fontFamily: "Lato",
-            color: "#fdffff",
-            cursor: "pointer",
-            fontSize: "1.8rem",
-            border: "none",
-            textTransform: "capitalize",
-            lineHeight: "2rem",
-            display: "block",
-            margin: "0 auto",
-            marginTop: "5rem",
-            marginBottom: "5rem",
-            width: "60%",
+      {items.length > 0 && (
+        <List
+          sx={{
+            width: "100%",
+            maxWidth: 600,
+            bgcolor: "background.paper",
           }}
-          size="large"
-          margin="normal"
         >
-          Place Order
-        </Button>
-      </List>
+          {items.map((item, i) => (
+            <>
+              <div className="cart">
+                <div className="cart--delete">
+                  <img src={Trashcan} onClick={() => deleteItem(item.id)} />
+                  {/* <DeleteIcon /> */}
+                </div>
+                <ListItemButton onClick={() => handleClick(item.id)}>
+                  <ListItemAvatar>
+                    <Avatar variant="square">
+                      <img src={item.image} />
+                    </Avatar>
+                  </ListItemAvatar>
+                  <ListItemText primary={item.name} secondary={item.price} />
+                  {open && clickedItem === item.id ? (
+                    <ExpandLess />
+                  ) : (
+                    <ExpandMore />
+                  )}
+                </ListItemButton>
+              </div>
+
+              <Collapse
+                in={open && clickedItem === item.id}
+                timeout="auto"
+                unmountOnExit
+              >
+                <List component="div" disablePadding>
+                  <ListItem sx={{ pl: 4 }}>
+                    <ListItemText primary={item.description} />
+                  </ListItem>
+                </List>
+              </Collapse>
+              <Divider variant="inset" component="li" />
+            </>
+          ))}
+          <Button
+            variant="contained"
+            onClick={handleSubmit}
+            style={{
+              background: "#d95d39",
+              padding: "0.8rem 1.2rem",
+              borderRadius: "10rem",
+              fontFamily: "Lato",
+              color: "#fdffff",
+              cursor: "pointer",
+              fontSize: "1.8rem",
+              border: "none",
+              textTransform: "capitalize",
+              lineHeight: "2rem",
+              display: "block",
+              margin: "0 auto",
+              marginTop: "5rem",
+              marginBottom: "5rem",
+              width: "60%",
+            }}
+            size="large"
+            margin="normal"
+          >
+            Place Order
+          </Button>
+        </List>
+      )}
     </div>
   );
 }
