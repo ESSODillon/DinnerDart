@@ -1,0 +1,17 @@
+.cart {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    &--list {
+        display: flex;
+        width: 100%;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        margin: 0 auto;
+    }
+    
+    &--delete {
+        padding-right: 1rem;
+    }
+}

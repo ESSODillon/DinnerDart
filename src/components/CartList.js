@@ -10,11 +10,7 @@ import Trashcan from "../assets/trashcan.svg";
 
 // Material UI
 import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import Collapse from "@mui/material/Collapse";
-import StarBorder from "@mui/icons-material/StarBorder";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import ListSubheader from "@mui/material/ListSubheader";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import List from "@mui/material/List";
@@ -23,12 +19,13 @@ import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Divider from "@mui/material/Divider";
+import Delete from "@mui/icons-material/Delete";
 
 export default function CartList({ items }) {
   const { user } = useAuthContext();
   const { role } = useRole();
   const [isPending] = useState(false);
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   const handleClick = () => {
     setOpen(!open);
@@ -39,31 +36,32 @@ export default function CartList({ items }) {
   };
 
   return (
-    <div className="menu--list">
-      {items.length === 0 && <p>No items yet!</p>}
+    <div className="cart--list">
+      {items.length === 0 && <p>Your cart is empty</p>}
       <List
         sx={{
           width: "100%",
           maxWidth: 600,
           bgcolor: "background.paper",
         }}
-        subheader={
-          <ListSubheader component="div" id="nested-list-subheader">
-            {user.displayName}'s Cart
-          </ListSubheader>
-        }
       >
         {items.map((item) => (
           <>
-            <ListItemButton onClick={handleClick}>
-              <ListItemAvatar>
-                <Avatar>
-                  <img src={item.image} />
-                </Avatar>
-              </ListItemAvatar>
-              <ListItemText primary={item.name} secondary={item.price} />
-              {open ? <ExpandLess /> : <ExpandMore />}
-            </ListItemButton>
+            <div className="cart">
+              <div className="cart--delete">
+                <img src={Trashcan} onClick={() => deleteItem(item.id)} />
+                {/* <DeleteIcon /> */}
+              </div>
+              <ListItemButton onClick={handleClick}>
+                <ListItemAvatar>
+                  <Avatar variant="square">
+                    <img src={item.image} />
+                  </Avatar>
+                </ListItemAvatar>
+                <ListItemText primary={item.name} secondary={item.price} />
+                {open ? <ExpandLess /> : <ExpandMore />}
+              </ListItemButton>
+            </div>
 
             <Collapse in={open} timeout="auto" unmountOnExit>
               <List component="div" disablePadding>

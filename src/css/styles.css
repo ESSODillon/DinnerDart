@@ -221,6 +221,19 @@ body {
   margin: 5rem;
   margin-top: 9vh; }
 
+.cart {
+  display: flex;
+  align-items: center;
+  cursor: pointer; }
+  .cart--list {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin: 0 auto; }
+  .cart--delete {
+    padding-right: 1rem; }
+
 .auth-background {
   width: 100vw;
   height: 93%;

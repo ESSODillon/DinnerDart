@@ -22,7 +22,7 @@ export default function Cart() {
       {/* {error && <p className="error">{error}</p>} */}
       {isPending && <p className="loading">Loading...</p>}
       <Typography sx={{ mb: 10, mt: 15, ml: "5rem" }} variant="h3">
-        Cart
+        {user.displayName}'s Cart
       </Typography>
       {documents != null && <CartList items={documents} />}
     </div>
