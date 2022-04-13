@@ -19,16 +19,17 @@ import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Divider from "@mui/material/Divider";
-import Delete from "@mui/icons-material/Delete";
 
 export default function CartList({ items }) {
   const { user } = useAuthContext();
   const { role } = useRole();
   const [isPending] = useState(false);
   const [open, setOpen] = useState(false);
+  const [clickedItem, setClickedItem] = useState(null);
 
-  const handleClick = () => {
+  const handleClick = (id) => {
     setOpen(!open);
+    setClickedItem(id);
   };
 
   const deleteItem = (id) => {
@@ -45,25 +46,33 @@ export default function CartList({ items }) {
           bgcolor: "background.paper",
         }}
       >
-        {items.map((item) => (
+        {items.map((item, i) => (
           <>
             <div className="cart">
               <div className="cart--delete">
                 <img src={Trashcan} onClick={() => deleteItem(item.id)} />
                 {/* <DeleteIcon /> */}
               </div>
-              <ListItemButton onClick={handleClick}>
+              <ListItemButton onClick={() => handleClick(item.id)}>
                 <ListItemAvatar>
                   <Avatar variant="square">
                     <img src={item.image} />
                   </Avatar>
                 </ListItemAvatar>
                 <ListItemText primary={item.name} secondary={item.price} />
-                {open ? <ExpandLess /> : <ExpandMore />}
+                {open && clickedItem === item.id ? (
+                  <ExpandLess />
+                ) : (
+                  <ExpandMore />
+                )}
               </ListItemButton>
             </div>
 
-            <Collapse in={open} timeout="auto" unmountOnExit>
+            <Collapse
+              in={open && clickedItem === item.id}
+              timeout="auto"
+              unmountOnExit
+            >
               <List component="div" disablePadding>
                 <ListItem sx={{ pl: 4 }}>
                   <ListItemText primary={item.description} />
