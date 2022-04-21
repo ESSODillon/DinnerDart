@@ -1,12 +1,12 @@
 // React, Firebase and Router
 import React, { useState } from "react";
-import { projectFirestore } from "../firebase/config";
-import { useAuthContext } from "../hooks/useAuthContext";
-import { useRole } from "../hooks/useRole";
-import { useCollection } from "../hooks/useCollection";
+import { projectFirestore } from "../../firebase/config";
+import { useAuthContext } from "../../hooks/useAuthContext";
+import { useRole } from "../../hooks/useRole";
+import { useCollection } from "../../hooks/useCollection";
 
 // Images
-import Trashcan from "../assets/trashcan.svg";
+import Trashcan from "../../assets/trashcan.svg";
 
 // Material UI
 import Card from "@mui/material/Card";

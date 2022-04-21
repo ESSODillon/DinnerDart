@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useCollection } from "../../hooks/useCollection";
-import CartList from "../../components/CartList";
+import CartList from "./CartList";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { Typography } from "@mui/material";
 

@@ -1,8 +1,8 @@
 import { Button } from "@mui/material";
-import { useFirestore } from "../hooks/useFirestore";
+import { useFirestore } from "../../hooks/useFirestore";
 import { useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useAuthContext } from "../hooks/useAuthContext";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 export default function MenuBanner({ cart }) {
   const [total, setTotal] = useState(cart[0].price);

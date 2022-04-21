@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { useDocument } from "../../hooks/useDocument";
 import { useCollection } from "../../hooks/useCollection";
-import MenuList from "../../components/MenuList";
+import MenuList from "./MenuList";
 import { Typography } from "@mui/material";
 
 export default function Menu() {

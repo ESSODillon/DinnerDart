@@ -1,6 +1,23 @@
 .orders {
-    width: 100vw;
-    height: 60vh;
+    width: 80vw;
+    height: 100%;
     margin: 5rem;
     margin-top: 9vh;
+
+    &--list {
+         margin: 5rem;
+    }
+
+    &--card {
+        position: relative;
+        margin-bottom: 4rem;
+    
+        &__price {
+          background-color: $bg-color;
+          position: absolute;
+          right: 1rem;
+          top: 1rem;
+          font-weight: bold;
+        }
+      }
 }

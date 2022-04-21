@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useCollection } from "../../hooks/useCollection";
-import OrderList from "../../components/OrderList";
+import OrderList from "./OrderList";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { Typography } from "@mui/material";
 
@@ -25,7 +25,7 @@ export default function Orders() {
       <Typography sx={{ mb: 10, mt: 15, ml: "5rem" }} variant="h3">
         Orders
       </Typography>
-      {documents != null && <OrderList items={documents} />}
+      {documents != null && <OrderList orders={documents} />}
     </div>
   );
 }

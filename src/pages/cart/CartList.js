@@ -1,14 +1,14 @@
 // React, Firebase and Router
 import React, { useState } from "react";
-import { useAuthContext } from "../hooks/useAuthContext";
-import { projectFirestore } from "../firebase/config";
-import { useRole } from "../hooks/useRole";
-import { useCollection } from "../hooks/useCollection";
-import { useFirestore } from "../hooks/useFirestore";
+import { useAuthContext } from "../../hooks/useAuthContext";
+import { projectFirestore } from "../../firebase/config";
+import { useRole } from "../../hooks/useRole";
+import { useCollection } from "../../hooks/useCollection";
+import { useFirestore } from "../../hooks/useFirestore";
 import { useHistory } from "react-router-dom";
 
 // Images
-import Trashcan from "../assets/trashcan.svg";
+import Trashcan from "../../assets/trashcan.svg";
 
 // Material UI
 import ListItemButton from "@mui/material/ListItemButton";
@@ -44,7 +44,7 @@ export default function CartList({ items }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await addDocument(items);
+    await addDocument({ items, customer: user.displayName });
 
     if (!response.error) {
       for (let i = 0; i < items.length; i++) {

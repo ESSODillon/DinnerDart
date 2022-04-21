@@ -235,10 +235,21 @@ body {
     padding-right: 1rem; }
 
 .orders {
-  width: 100vw;
-  height: 60vh;
+  width: 80vw;
+  height: 100%;
   margin: 5rem;
   margin-top: 9vh; }
+  .orders--list {
+    margin: 5rem; }
+  .orders--card {
+    position: relative;
+    margin-bottom: 4rem; }
+    .orders--card__price {
+      background-color: #fdffff;
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+      font-weight: bold; }
 
 .auth-background {
   width: 100vw;
