@@ -16,6 +16,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import { Button } from "@mui/material";
 
 export default function OrderList({ orders }) {
   const { role } = useRole();
@@ -38,12 +39,19 @@ export default function OrderList({ orders }) {
             id="panel1a-header"
           >
             <Typography>{order.customer}'s Order</Typography>
+            {/* <Button></Button> */}
           </AccordionSummary>
-          <AccordionDetails sx={{}}>
+          <AccordionDetails
+            sx={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "space-between",
+            }}
+          >
             {order.items.map((item) => (
               <Card
                 sx={{
-                  width: "45rem",
+                  width: "40rem",
                   minHeight: "13rem",
                   display: "flex",
                   justifyContent: "space-between",
