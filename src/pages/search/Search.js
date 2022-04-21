@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import { useCollection } from "../../hooks/useCollection";
 
 // Components
-import RestaurantList from "../../components/RestaurantList";
+import RestaurantList from "../home/RestaurantList";
 
 export default function Search() {
   const queryString = useLocation().search;

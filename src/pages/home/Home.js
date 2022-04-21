@@ -3,9 +3,9 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 import { useCollection } from "../../hooks/useCollection";
 
 // Components
-import RestaurantList from "../../components/RestaurantList";
-import Searchbar from "../../components/Searchbar";
-import RestaurantFilter from "../../components/RestaurantFilter";
+import RestaurantList from "./RestaurantList";
+import Searchbar from "./Searchbar";
+import RestaurantFilter from "./RestaurantFilter";
 
 export default function Home() {
   const { user } = useAuthContext();
