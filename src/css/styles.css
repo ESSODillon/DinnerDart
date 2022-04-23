@@ -196,7 +196,9 @@ body {
       position: absolute;
       right: 1rem;
       top: 1rem;
-      font-weight: bold; }
+      padding: .25rem; }
+    .menu--card__description {
+      padding-bottom: 2rem; }
   .menu--banner {
     position: -webkit-sticky;
     position: sticky;

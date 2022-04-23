@@ -28,7 +28,11 @@
       position: absolute;
       right: 1rem;
       top: 1rem;
-      font-weight: bold;
+      padding: .25rem;
+    }
+
+    &__description {
+      padding-bottom: 2rem;
     }
   }
 

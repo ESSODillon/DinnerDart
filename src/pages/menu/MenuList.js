@@ -86,6 +86,7 @@ export default function MenuList({ items }) {
                   variant="subtitle1"
                   color="text.secondary"
                   component="div"
+                  className="menu--card__description"
                 >
                   {item.description}
                 </Typography>
