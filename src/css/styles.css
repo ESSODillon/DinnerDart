@@ -300,6 +300,53 @@ body {
       color: #d95d39;
       margin-left: 0.5rem; }
 
+.create-background {
+  width: 100vw;
+  height: 93%;
+  position: absolute;
+  margin-top: 8vh;
+  background-image: linear-gradient(to left bottom, rgba(58, 51, 53, 0.9), rgba(58, 51, 53, 0.9)), url(../assets/background2.jpeg);
+  background-size: cover;
+  background-position: top; }
+
+.create-form {
+  max-width: 36rem;
+  margin: 6rem auto;
+  padding: 4rem;
+  border: 0.1rem solid #ddd;
+  box-shadow: 0.3rem 0.3rem 0.5rem rgba(0, 0, 0, 0.05);
+  background: #fff;
+  font-size: 1.6rem; }
+  .create-form__label {
+    display: block;
+    margin: 2.4rem auto; }
+  .create-form__span {
+    display: block;
+    margin-bottom: 0.6rem; }
+  .create-form__span {
+    display: block;
+    margin-bottom: 0.6rem; }
+  .create-form__input, .create-form__textarea {
+    padding: 0.8rem 0.6rem;
+    color: #777;
+    width: 100%;
+    box-sizing: border-box;
+    border: 0.1rem solid #ddd;
+    border-radius: 0.4rem; }
+    .create-form__input:active, .create-form__input:focus, .create-form__textarea:active, .create-form__textarea:focus {
+      outline: 0.1rem solid rgba(217, 93, 57, 0.5);
+      border: 0.1rem solid rgba(217, 93, 57, 0.5); }
+  .create-form__textarea {
+    min-height: 16rem; }
+  .create-form__redirect {
+    margin-top: 2.5rem;
+    font-size: 1.5rem;
+    text-align: center; }
+    .create-form__redirect--link {
+      text-decoration: none;
+      color: #d95d39;
+      margin-left: 0.5rem; }
+
 .restaurant-list {
   display: flex;
   flex-wrap: wrap;

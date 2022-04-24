@@ -81,6 +81,17 @@ export default function Navbar() {
                   </Link>
                 </li>
               )}
+              {role === "restaurant" && (
+                <li
+                  className="navigation__item"
+                  id="navi-link"
+                  onClick={toggleNav}
+                >
+                  <Link to="/create" className="navigation__link">
+                    Create
+                  </Link>
+                </li>
+              )}
               <li
                 className="navigation__item"
                 id="navi-link"

@@ -13,6 +13,7 @@ import Footer from "./components/Footer";
 import Search from "./pages/search/Search";
 import Menu from "./pages/menu/Menu";
 import Orders from "./pages/orders/Orders";
+import Create from "./pages/create/Create";
 
 function App() {
   const { user, authIsReady } = useAuthContext();
@@ -46,6 +47,10 @@ function App() {
           <Route path="/orders">
             {!user && <Redirect to="/login" />}
             {role === "darter" && <Orders />}
+          </Route>
+          <Route path="/create">
+            {!user && <Redirect to="/login" />}
+            {role === "restaurant" && <Create />}
           </Route>
           <Route path="/login">
             {user && <Redirect to="/" />}
