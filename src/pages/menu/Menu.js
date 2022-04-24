@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useDocument } from "../../hooks/useDocument";
 import { useCollection } from "../../hooks/useCollection";
 import MenuList from "./MenuList";
-import { Typography } from "@mui/material";
+import { Divider, Typography } from "@mui/material";
 
 export default function Menu() {
   const { id } = useParams();
@@ -25,9 +25,18 @@ export default function Menu() {
       {isPending && <p className="loading">Loading...</p>}
       {document && (
         <>
-          <Typography sx={{ mb: 10, mt: 15, ml: "5rem" }} variant="h3">
-            {document.name}
-          </Typography>
+          <div className="u-margin-bottom-medium">
+            <Typography sx={{ mb: 1, ml: "5rem" }} variant="h3">
+              {document.name}
+            </Typography>
+            <Typography
+              sx={{ mb: 1, ml: "5rem", color: "#808080" }}
+              variant="h6"
+            >
+              {document.address} • {document.phone}
+            </Typography>
+            <Divider sx={{ width: "90vw", ml: "5rem" }} />
+          </div>
           <MenuList items={documents} />
         </>
       )}
