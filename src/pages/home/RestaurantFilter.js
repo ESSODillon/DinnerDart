@@ -73,6 +73,11 @@ export default function RestaurantFilter({ currentFilter, changeFilter }) {
     if (window.innerWidth < 750) {
       setCuisineNum(6);
     }
+
+    // Phones
+    if (window.innerWidth < 600) {
+      setCuisineNum(4);
+    }
   }
 
   // function that custom styles the arrows on the Carousel
