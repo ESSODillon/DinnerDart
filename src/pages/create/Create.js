@@ -5,6 +5,7 @@ import { useFirestore } from "../../hooks/useFirestore";
 import { useHistory } from "react-router-dom";
 import Button from "@mui/material/Button";
 import { Rating } from "@mui/material";
+import SelectUnstyled from "@mui/base/SelectUnstyled";
 
 import Box from "@mui/material/Box";
 import OutlinedInput from "@mui/material/OutlinedInput";
@@ -96,6 +97,44 @@ export default function Create() {
       <form id="create-form" className="create-form" onSubmit={handleSubmit}>
         <h2 className="create-form__header">Create New Restaurant</h2>
         <label className="create-form__label">
+          <span className="create-form__span">cuisines:</span>
+          <Select
+            multiple
+            className="create-form__input"
+            sx={{ padding: 0 }}
+            value={cuisines}
+            onChange={(e) => setCuisines(e.target.value)}
+            input={<OutlinedInput id="select-multiple-chip" />}
+            renderValue={(selected) => (
+              <Box
+                sx={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: 0.5,
+                }}
+              >
+                {selected.map((value) => (
+                  <Chip key={value} label={value} />
+                ))}
+              </Box>
+            )}
+          >
+            {filterList.map((filter) => (
+              <MenuItem sx={{}} key={filter} value={filter}>
+                {filter}
+              </MenuItem>
+            ))}
+          </Select>
+        </label>
+        <label className="create-form__label">
+          <span className="create-form__span">rating:</span>
+          <Rating
+            onChange={(e) => setRating(e.target.value)}
+            size="large"
+            value={rating}
+          />
+        </label>
+        <label className="create-form__label">
           <span className="create-form__span">name:</span>
           <input
             required
@@ -130,38 +169,6 @@ export default function Create() {
             onChange={(e) => setAddress(e.target.value)}
             value={address}
           />
-        </label>
-        <label className="create-form__label">
-          <span className="create-form__span">rating:</span>
-          <Rating
-            onChange={(e) => setRating(e.target.value)}
-            size="large"
-            value={rating}
-          />
-        </label>
-        <label className="create-form__label">
-          <span className="create-form__span">cuisines:</span>
-          <Select
-            multiple
-            className="create-form__input"
-            sx={{ padding: 0 }}
-            value={cuisines}
-            onChange={(e) => setCuisines(e.target.value)}
-            input={<OutlinedInput id="select-multiple-chip" />}
-            renderValue={(selected) => (
-              <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
-                {selected.map((value) => (
-                  <Chip key={value} label={value} />
-                ))}
-              </Box>
-            )}
-          >
-            {filterList.map((filter) => (
-              <MenuItem key={filter} value={filter}>
-                {filter}
-              </MenuItem>
-            ))}
-          </Select>
         </label>
         <Button
           variant="contained"
