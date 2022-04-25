@@ -5,13 +5,9 @@ import { useFirestore } from "../../hooks/useFirestore";
 import { useHistory } from "react-router-dom";
 import Button from "@mui/material/Button";
 import { Rating } from "@mui/material";
-import SelectUnstyled from "@mui/base/SelectUnstyled";
-
 import Box from "@mui/material/Box";
 import OutlinedInput from "@mui/material/OutlinedInput";
-import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Chip from "@mui/material/Chip";
 
@@ -20,7 +16,6 @@ export default function Create() {
   const { addDocument, response } = useFirestore("restaurants");
   const { documents } = useCollection("restaurants");
   const { user } = useAuthContext();
-  const [users, setUsers] = useState([]);
 
   // form field states and values
   const [name, setName] = useState("");
@@ -28,17 +23,12 @@ export default function Create() {
   const [city, setCity] = useState("");
   const [cuisines, setCuisines] = useState([]);
   const [hours, setHours] = useState("");
-  const [image, setImage] = useState("");
-  const [phone, setPhone] = useState("");
   const [rating, setRating] = useState(0);
   const [state, setState] = useState("");
+  const [image, setImage] = useState("");
+  const [phone, setPhone] = useState("");
   const [zipCode, setZipCode] = useState("");
   const [formError, setFormError] = useState(null);
-
-  // Old values
-  const [eventPromoter, setEventPromoter] = useState("");
-  const [weightClass, setWeightClass] = useState("");
-  const [assignedFighters, setAssignedFighters] = useState([]);
 
   const cuisinesList = [];
 
@@ -60,16 +50,8 @@ export default function Create() {
     setFormError(null);
 
     // Substitutes for 'required'
-    if (!weightClass) {
-      setFormError("Please select a weight class");
-      return;
-    }
-    if (!eventPromoter) {
-      setFormError("Please select an event promoter");
-      return;
-    }
-    if (assignedFighters.length < 1) {
-      setFormError("Please assign the event to at least 1 fighter");
+    if (cuisines.length < 1) {
+      setFormError("Please assign the restaurant to at least 1 cuisine type");
       return;
     }
 
@@ -80,7 +62,16 @@ export default function Create() {
     };
 
     const restaurant = {
-      name: name,
+      name,
+      address,
+      city,
+      cuisines,
+      hours,
+      image,
+      phone,
+      rating,
+      state,
+      zipCode,
       createdBy,
     };
 
@@ -168,6 +159,42 @@ export default function Create() {
             className="create-form__input"
             onChange={(e) => setAddress(e.target.value)}
             value={address}
+          />
+        </label>
+        <label className="create-form__label">
+          <span className="create-form__span">hours:</span>
+          <input
+            required
+            className="create-form__input"
+            onChange={(e) => setHours(e.target.value)}
+            value={hours}
+          />
+        </label>
+        <label className="create-form__label">
+          <span className="create-form__span">image url:</span>
+          <input
+            required
+            className="create-form__input"
+            onChange={(e) => setImage(e.target.value)}
+            value={image}
+          />
+        </label>
+        <label className="create-form__label">
+          <span className="create-form__span">phone number:</span>
+          <input
+            required
+            className="create-form__input"
+            onChange={(e) => setPhone(e.target.value)}
+            value={phone}
+          />
+        </label>
+        <label className="create-form__label">
+          <span className="create-form__span">zip code:</span>
+          <input
+            required
+            className="create-form__input"
+            onChange={(e) => setZipCode(e.target.value)}
+            value={zipCode}
           />
         </label>
         <Button
