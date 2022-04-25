@@ -7,6 +7,7 @@ import { useRole } from "../hooks/useRole";
 // Images
 import Tray from "../assets/food-tray.svg";
 import Bag from "../assets/shopping-bag.svg";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 // Material UI
 import Avatar from "@mui/material/Avatar";

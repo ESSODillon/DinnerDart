@@ -64,8 +64,8 @@ export default function MenuList({ items }) {
         <Badge
           key={item.id}
           fontSize="large"
-          color="primary"
           badgeContent={itemCount(item)}
+          // sx={{ color: "red" }}
         >
           <Card
             sx={{
@@ -92,10 +92,22 @@ export default function MenuList({ items }) {
                 </Typography>
 
                 <ButtonGroup
-                  sx={{ position: "absolute", bottom: "1rem", right: "30%" }}
+                  sx={{
+                    position: "absolute",
+                    bottom: "1rem",
+                    right: "30%",
+                  }}
                 >
                   <Button
                     aria-label="increase"
+                    sx={{
+                      border: "1px solid rgba(217, 93, 57, .5)",
+                      color: "#d95d39",
+                      "&:hover": {
+                        border: "1px solid rgba(217, 93, 57, 1)",
+                        backgroundColor: "rgba(217, 93, 57, .1)",
+                      },
+                    }}
                     className="add-button"
                     onClick={() => {
                       handleAddItem(item);
@@ -106,6 +118,14 @@ export default function MenuList({ items }) {
                   <Button
                     aria-label="reduce"
                     className="reduce-button"
+                    sx={{
+                      border: "1px solid rgba(217, 93, 57, .5)",
+                      color: "#d95d39",
+                      "&:hover": {
+                        border: "1px solid rgba(217, 93, 57, 1)",
+                        backgroundColor: "rgba(217, 93, 57, .1)",
+                      },
+                    }}
                     onClick={() => {
                       handleRemoveItem(item);
                     }}

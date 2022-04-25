@@ -189,8 +189,8 @@ body {
     cursor: pointer; }
     .menu--card:hover {
       transition: all 0.2s;
-      border: 2px solid #d95d39;
-      transform: translateY(-1rem); }
+      border: 2px solid rgba(217, 93, 57, 0.5);
+      transform: translateY(-0.5rem); }
     .menu--card__price {
       background-color: #fdffff;
       position: absolute;
