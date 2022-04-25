@@ -62,7 +62,7 @@ export default function Navbar() {
                 id="navi-link"
                 onClick={toggleNav}
               >
-                <Link to="/profile" className="navigation__link">
+                <Link to="/" className="navigation__link">
                   <Avatar
                     sx={{ mr: "2rem" }}
                     alt="Profile Picture"

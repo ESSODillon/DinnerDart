@@ -58,7 +58,7 @@ export default function MenuBanner({ cart }) {
           </li>
         ))}
         <br />
-        <li className="menu--banner__list--item">Total: ${total}</li>
+        {/* <li className="menu--banner__list--item">Total: ${total}</li> */}
       </ul>
 
       <Button

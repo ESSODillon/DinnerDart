@@ -20,6 +20,8 @@ import Button from "@mui/material/Button";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import MenuBanner from "./MenuBanner";
+import { createTheme } from "@mui/material/styles";
+import { purple } from "@mui/material/colors";
 
 export default function MenuList({ items }) {
   const { user } = useAuthContext();
@@ -28,6 +30,14 @@ export default function MenuList({ items }) {
   const [isPending] = useState(false);
   const [count, setCount] = useState(0);
   const [cart, setCart] = useState([]);
+
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: "#d95d39",
+      },
+    },
+  });
 
   const deleteItem = (id) => {
     projectFirestore.collection("restaurants").doc(id).delete();
@@ -65,7 +75,7 @@ export default function MenuList({ items }) {
           key={item.id}
           fontSize="large"
           badgeContent={itemCount(item)}
-          // sx={{ color: "red" }}
+          color="error"
         >
           <Card
             sx={{
