@@ -47,10 +47,12 @@ function App() {
           <Route path="/orders">
             {!user && <Redirect to="/login" />}
             {role === "darter" && <Orders />}
+            {role === "admin" && <Orders />}
           </Route>
           <Route path="/create">
             {!user && <Redirect to="/login" />}
             {role === "restaurant" && <Create />}
+            {role === "admin" && <Create />}
           </Route>
           <Route path="/login">
             {user && <Redirect to="/" />}

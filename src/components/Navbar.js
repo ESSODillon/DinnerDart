@@ -92,6 +92,28 @@ export default function Navbar() {
                   </Link>
                 </li>
               )}
+              {role === "admin" && (
+                <li
+                  className="navigation__item"
+                  id="navi-link"
+                  onClick={toggleNav}
+                >
+                  <Link to="/create" className="navigation__link">
+                    Create
+                  </Link>
+                </li>
+              )}
+              {role === "admin" && (
+                <li
+                  className="navigation__item"
+                  id="navi-link"
+                  onClick={toggleNav}
+                >
+                  <Link to="/orders" className="navigation__link">
+                    Orders
+                  </Link>
+                </li>
+              )}
               <li
                 className="navigation__item"
                 id="navi-link"
@@ -139,11 +161,17 @@ export default function Navbar() {
         </ul>
       </nav>
 
-      <Link to="/cart">
-        <div className="navigation__bag">
-          <img src={Bag} alt="Shopping bag" className="navigation__bag--icon" />
-        </div>
-      </Link>
+      {user && (
+        <Link to="/cart">
+          <div className="navigation__bag">
+            <img
+              src={Bag}
+              alt="Shopping bag"
+              className="navigation__bag--icon"
+            />
+          </div>
+        </Link>
+      )}
     </div>
   );
 }

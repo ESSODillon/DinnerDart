@@ -302,7 +302,7 @@ body {
 
 .create-background {
   width: 100vw;
-  height: 115%;
+  height: max-content;
   position: absolute;
   margin-top: 8vh;
   background-image: linear-gradient(to left bottom, rgba(58, 51, 53, 0.9), rgba(58, 51, 53, 0.9)), url(../assets/background2.jpeg);
