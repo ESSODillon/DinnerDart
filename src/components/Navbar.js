@@ -35,13 +35,10 @@ export default function Navbar() {
         checked={activeNav}
         onChange={toggleNav}
       ></input>
-
       <label htmlFor="navi-toggle" className="navigation__button">
         <span className="navigation__icon">&nbsp;</span>
       </label>
-
       <div className="navigation__background">&nbsp;</div>
-
       <Link to="/">
         <h1 className="heading-logo">
           <img
@@ -52,7 +49,6 @@ export default function Navbar() {
           Dinner <span className="heading-logo--orange">Dart</span>
         </h1>
       </Link>
-
       <nav className="navigation__nav">
         <ul className="navigation__list">
           {user && (
@@ -130,6 +126,16 @@ export default function Navbar() {
                 id="navi-link"
                 onClick={toggleNav}
               >
+                <Link to="/cart" className="navigation__link">
+                  Cart
+                </Link>
+              </li>
+
+              <li
+                className="navigation__item"
+                id="navi-link"
+                onClick={toggleNav}
+              >
                 <Link to="/" onClick={logout} className="navigation__link">
                   Logout
                 </Link>
@@ -161,8 +167,7 @@ export default function Navbar() {
           )}
         </ul>
       </nav>
-
-      {user && (
+      {window.innerWidth > 415 && (
         <Link to="/cart">
           <div className="navigation__bag">
             <img

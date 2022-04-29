@@ -1,13 +1,17 @@
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { useDocument } from "../../hooks/useDocument";
+import { useRole } from "../../hooks/useRole";
 import { useCollection } from "../../hooks/useCollection";
+import { useAuthContext } from "../../hooks/useAuthContext";
 import MenuList from "./MenuList";
 import { Divider, Typography } from "@mui/material";
 import FormDialog from "./FormDialogue";
 
 export default function Menu() {
+  const { role } = useRole();
   const { id } = useParams();
+  const { user } = useAuthContext();
   const [isPending, setIsPending] = useState(false);
   const { documents } = useCollection(`restaurants/${id}/menu`);
   const { error, document } = useDocument("restaurants", id);
@@ -39,7 +43,7 @@ export default function Menu() {
             <Divider sx={{ width: "90vw", ml: "5rem" }} />
           </div>
           <MenuList items={documents} />
-          <FormDialog id={id} />
+          {role === "admin" && <FormDialog id={id} />}
         </>
       )}
     </div>
