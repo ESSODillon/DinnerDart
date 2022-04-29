@@ -36,7 +36,8 @@ export default function Footer() {
         </li>
       </ul>
       <p className="copyright">
-        &copy; Copyright 2022 website designed and developed by Dillon Polley
+        &copy; Copyright 2022 website designed and developed by Dillon Polley.
+        Based off of "Dinner Dart Deliverer" short film by Octavius Gillard.
       </p>
     </footer>
   );

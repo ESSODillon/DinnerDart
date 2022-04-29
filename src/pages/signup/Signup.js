@@ -100,7 +100,6 @@ export default function Signup() {
             onChange={(e) => setRole(e.target.value)}
           >
             <option value="customer">Customer</option>
-            <option value="admin">Admin</option>
             <option value="darter">Darter</option>
             <option value="restaurant">Restaurant</option>
           </select>
