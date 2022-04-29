@@ -217,12 +217,6 @@ body {
         color: #fdffff;
         font-size: 1.25rem; }
 
-.profile {
-  width: 100vw;
-  height: 100vh;
-  margin: 5rem;
-  margin-top: 9vh; }
-
 .cart {
   display: flex;
   align-items: center;

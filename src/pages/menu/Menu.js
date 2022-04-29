@@ -4,6 +4,7 @@ import { useDocument } from "../../hooks/useDocument";
 import { useCollection } from "../../hooks/useCollection";
 import MenuList from "./MenuList";
 import { Divider, Typography } from "@mui/material";
+import FormDialog from "./FormDialogue";
 
 export default function Menu() {
   const { id } = useParams();
@@ -38,6 +39,7 @@ export default function Menu() {
             <Divider sx={{ width: "90vw", ml: "5rem" }} />
           </div>
           <MenuList items={documents} />
+          <FormDialog id={id} />
         </>
       )}
     </div>
